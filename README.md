@@ -1,9 +1,9 @@
 ## CS240lx: advanced operating system lab, accelerated
 ### Engler, Spr 2020.
 
-tl;dr:
+Precis:
   - [Course website](https://github.com/dddrrreee/cs240lx-20spr)
-  - clone:
+  - To get the repository: 
 
         git clone git@github.com:dddrrreee/cs240lx-20spr.git
 
