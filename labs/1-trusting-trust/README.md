@@ -82,4 +82,3 @@ For this lab you will write code to implement Thompson's hack.  We break
 it down in four stages.
 
 #### Part 1: self-reproducing program.
-
