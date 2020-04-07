@@ -17,10 +17,11 @@ new tricks.
 ---------------------------------------------------------------------
 ### Part 1: Initial Unix-side labs
 
-  1. You'll implement a simplified version of Ken Thompson's evil compiler
-     hack that we described in his Turing award lecture.
+  - [1-trusting-trust](1-trusting-trust): You'll implement a simplified
+    version of Ken Thompson's evil compiler
+    hack that we described in his Turing award lecture.
 
-  2. Ptrace: you'll use ptrace to make a simple system call fault injector.
+  - Ptrace: you'll use ptrace to make a simple system call fault injector.
 
 ---------------------------------------------------------------------
 ### Part 2: Devices
