@@ -1,6 +1,12 @@
 ## CS240lx: advanced operating system lab, accelerated
 ### Engler, Spr 2020.
 
+tl;dr:
+  - [Course website](https://github.com/dddrrreee/cs240lx-20spr)
+  - clone:
+
+        git clone git@github.com:dddrrreee/cs240lx-20spr.git
+
 This is a implementation-heavy, lab-based class that will cover similar
 topics as CS240 --- threads, virtual memory, file systems and distributed
 systems --- but by writing code versus discussing papers.  After taking an
