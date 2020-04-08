@@ -82,3 +82,23 @@ For this lab you will write code to implement Thompson's hack.  We break
 it down in four stages.
 
 #### Part 1: self-reproducing program.
+
+Follow the `READMD.md` in `code/step1` and implement `string-to-char-array.c`
+such that you can generate a self-reproducing program based on 
+Figure 1 in Thompson's paper.
+
+#### Part 2: inject an attack into password
+
+For next class: modify the given "compiler" to inject an attack in the given
+password program.
+
+#### Part 3: inject an attack into the compiler.
+
+For next class: modify the given "compiler" so that it will inject the attack
+in Part 2 into a clean copy of itself.
+
+You have now replicated Thompon's hack.  It's something that seems
+simple, but when you actually have to write the code, you realize you
+don't actually know the next thing to type.  I've met many people that
+know of this hack.  I've not met a single one that had ever written the
+code to do it.
