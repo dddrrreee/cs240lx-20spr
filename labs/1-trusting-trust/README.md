@@ -83,22 +83,31 @@ it down in four stages.
 
 #### Part 1: self-reproducing program.
 
-Follow the `READMD.md` in `code/step1` and implement `string-to-char-array.c`
-such that you can generate a self-reproducing program based on 
-Figure 1 in Thompson's paper.
+Follow the [README.md](code/step1/README.md) `code/step1` and implement
+`string-to-char-array.c` such that you can generate a self-reproducing
+program based on `Figure 1` in Thompson's paper.
 
-#### Part 2: inject an attack into password
+#### Part 2: inject an attack into login and compiler
 
-For next class: modify the given "compiler" to inject an attack in the given
-password program.
+Follow the [README.md](code/step2/README.md) in `code/step2` and implement
+simple attacks on the trivial login program (`step2/login.c`) and the
+identity compiler (`step2/identity-cc.c`).
 
-#### Part 3: inject an attack into the compiler.
+#### Part 3: inject an attack that will inject an attack into the compiler.
 
-For next class: modify the given "compiler" so that it will inject the attack
-in Part 2 into a clean copy of itself.
+Follow the [README.md](code/step3/README.md) in `code/step3` and combine
+the code from Part 1 and Part 2 so that your trojan compiler will take
+a clean, virgin copy of the "system" compiler `identity-cc.c` and inject
+a self-replicating copy of its trojan attack into it.
+
+#### Postscript
 
 You have now replicated Thompon's hack.  It's something that seems
 simple, but when you actually have to write the code, you realize you
-don't actually know the next thing to type.  I've met many people that
-know of this hack.  I've not met a single one that had ever written the
-code to do it.
+don't actually know the next thing to type.  
+
+Everyone I've met above a certain age in systems has read this paper
+and they all seem to think they understand it.  However, I've not met
+a single one that had ever written the code to do it.  There is a big
+difference between passively nodding to nouns and verbs and being able
+to actively construct an implementation of an idea.
