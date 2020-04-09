@@ -54,7 +54,7 @@ The basic approach:
 
 Before doing the fancy Thompson trick we'll just make sure everything
 works by injecting a dumb "attack" into the compiler that will cause it
-to add the `printf`:
+to inject the `printf` into the attacked compiler:
 
         printf("%s:%d: could have run your attack here!!\n\", 
                                         __FUNCTION__, __LINE__);
@@ -69,7 +69,8 @@ It should work similar to the `login` attack:
                 FILE *fp = fopen("./temp-out.c", "w\");
                 assert(fp);"
 
-   2. Inject the `printf` above in the emitted code.
+   2. Inject a `fprintf` that will emit the `printf` above in the
+      emitted code.
 
    3. When you compile `identity-cc` and then compile `login` it 
       should emit:
