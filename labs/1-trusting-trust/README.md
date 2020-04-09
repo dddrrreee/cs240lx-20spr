@@ -97,7 +97,7 @@ identity compiler (`step2/identity-cc.c`).
 
 Follow the [README.md](code/step3/README.md) in `code/step3` and combine
 the code from Part 1 and Part 2 so that your trojan compiler will take
-a clean, virgin copy of the "system" compiler `identity-cc.c` and inject
+a clean, virgin copy of the "system" compiler `identity-cc.c` and injects
 a self-replicating copy of its trojan attack into it.
 
 #### Postscript
