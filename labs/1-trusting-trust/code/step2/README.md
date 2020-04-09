@@ -31,23 +31,24 @@ The basic approach:
    1. Modify `trojan-cc1` so that if it matches the string `int login(char
       *user) {` in the input code, then inject the attack:
 
-        if(strcmp(user, \"ken\") == 0) return 1;
+            if(strcmp(user, \"ken\") == 0) return 1;
 
-      at the beginning of `login`.  Emit all other code identically.
+      at the beginning of the `int login(...)` routine.  Emit all other
+      code identically.
 
    2. When you type `ken` as a user, `login` should give you success:
 
-        % ./trojan-cc1 login.c -o login-attacked
-        % ./login-attacked 
-        user: ken
-        successful login: <ken>
+            % ./trojan-cc1 login.c -o login-attacked
+            % ./login-attacked 
+            user: ken
+            successful login: <ken>
 
       And, of course, the one other user should still work:
 
-        % ./login-attacked
-        user: guest
-        passwd: password
-        successful login: <guest>
+            % ./login-attacked
+            user: guest
+            passwd: password
+            successful login: <guest>
 
 #### step 2: do a dumb attack on `identity-cc`
 
@@ -64,18 +65,18 @@ It should work similar to the `login` attack:
 
    1. Match the beginning of compile:
 
-        static void compile(char *program, char *outname) {
-            FILE *fp = fopen("./temp-out.c", "w\");
-            assert(fp);"
+            static void compile(char *program, char *outname) {
+                FILE *fp = fopen("./temp-out.c", "w\");
+                assert(fp);"
 
    2. Inject the `printf` above in the emitted code.
 
    3. When you compile `identity-cc` and then compile `login` it 
       should emit:
 
-        % ./trojan-cc1 identity-cc.c -o cc-attacked
-        % ./cc-attacked login.c -o login
-        compile:19: could have run your attack here!!
+            % ./trojan-cc1 identity-cc.c -o cc-attacked
+            % ./cc-attacked login.c -o login
+            compile:19: could have run your attack here!!
 
 Obviously, this isn't very interesting; we just do it to make debugging simple
 before the next step.
