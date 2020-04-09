@@ -87,12 +87,11 @@ before the next step.
 Cool!  These two are the easier steps just to make sure you can attack
 the programs you want.  
 
-The next one is the tricky step where:
-
-    - inject the code to
-    - inject these attacks 
-    - into the compiler so that it can 
-    - inject them into the compiler :)
+The next one is the tricky step where you will
+ - inject the code to
+ - inject these attacks 
+ - into the compiler so that it can 
+ - inject them into the compiler :)
 
 You will use the trick from `code/step1` to inject a self-replicating
 copy of the attack into `identity-cc.c` while compiling it.
@@ -101,8 +100,8 @@ Why do we have to do anything more?   The big problem of course is that
 after you replace the trojan copy of `identity-cc` with the code it 
 generates it will no longer contain the attack.  
 
-So, for Ken, if anyone ever re-compiled the system C compiler and
-replaced his binary of it that contains his attack, the attack is gone.
+So, for Ken, if anyone ever re-compiled the system C compiler and then 
+overwrote Ken's evil binary with the new copy, the attack is gone.
 For example using our toys to see the tragedy:
 
         # compile trojan
