@@ -21,8 +21,6 @@ new tricks.
     version of Ken Thompson's evil compiler
     hack that we described in his Turing award lecture.
 
-  - Ptrace: you'll use ptrace to make a simple system call fault injector.
-
 ---------------------------------------------------------------------
 ### Part 2: Devices
 
@@ -33,7 +31,7 @@ this we will do a set of labs building as many device drivers as we
 can in two weeks.  
 
 Additional benefits:
-  1. > 90% of OS code is device drivers, so it makes sense to learn how
+  1. 90% of OS code is device drivers, so it makes sense to learn how
      to write this kind of code.
   2. You will write your own emulator layer so that you can cross check your
      code against everyone else.
