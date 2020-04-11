@@ -6,6 +6,10 @@
 
         git clone git@github.com:dddrrreee/cs240lx-20spr.git
 
+  - To get the writeable contrib repository:
+
+        git clone git@github.com:mcevoypeter/cs240lx-contrib.git
+
 This is a implementation-heavy, lab-based class that will cover similar
 topics as CS240 --- threads, virtual memory, file systems and distributed
 systems --- but by writing code versus discussing papers.  After taking an
