@@ -112,19 +112,18 @@ you can see (1) the instructions available, and (2) their encodings.
      description.  If you need more information you can refer to
      [the longer instruction chapter (A4)](../../docs/armv6-inst.pdf).
      
-  2. This [arm assembly talk](./docs/Lecture8.pdf) gives a reasonable
-     overview of the instruction set along with some encodings --- you'll
-     need the later to generate machine code.
+  2. This [arm architecture talk]](./docs/Arm_EE382N_4.pdf)  is a
+     reasonable ARM crash course, which includes an overview of the
+     instruction set along with some encodings --- you'll need the later
+     to generate machine code.
+
 
 Optionally, if you'd like some more takes on ARM assembly:
   1. [quick reference](../../docs/arm-asm-quick-ref.pdf) gives a quick
      reference of all the ARM assembly instructions (note: we are not
      going to use Thumb mode).
-
-  1. [ARM Hohl](./docs/subroutines.hohl-arm-asm.pdf) talks about how to pass
+  2. [ARM Hohl](./docs/subroutines.hohl-arm-asm.pdf) talks about how to pass
      parameters.
-  2. For ARM assembly code, the [ARM asm talk](./docs/Arm_EE382N_4.pdf) 
-     is a reasonable crash course.
   3. The ARM manuals in our top-level `docs` directory have the definitive,
      detailed description of anything you need to know.
 
