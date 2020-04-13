@@ -32,8 +32,7 @@ OBJS := $(patsubst %.c, %.o, $(SOURCES))
 CFLAGS = -Og -Wall -Wno-unused-function -Werror -DLIB_UNUX -I. -g
 CC = gcc
 
-LIB_BASE= support.unix
-TARGET := lib-$(LIB_BASE).a
+TARGET := libunix.a
 BUILD_DIR := ./objs
 
 OBJS := $(foreach o, $(OBJS), $(BUILD_DIR)/$(notdir $o))
