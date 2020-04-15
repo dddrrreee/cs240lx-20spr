@@ -38,9 +38,15 @@ The key files:
 
 If you look at `main` you'll see five parts to build --- each is pretty
 simple, but it gives you a feel for how the more general tricks are played:
+  0. Define the environment variable `CS240LX_2021_PATH` to be where your
+     repo is.  For example:
+        
+        setenv CS240LX_2021_PATH /home/engler/class/cs240lx-20spr/
+
+
   1. Write the code (`insts_emit`) to emit strings of assembly 
-    and read in machine code.  You'll call out to the ARM cross compiler
-    linker etc on your system.  `make.sh` has some examples.
+     and read in machine code.  You'll call out to the ARM cross compiler
+     linker etc on your system.  `make.sh` has some examples.
   2. Use (1) to implement a simple cross-checker that takes a
      machine code value and cross checks it against what is produced
      by the assembler.
