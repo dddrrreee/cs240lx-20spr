@@ -52,10 +52,13 @@ void remove_nonprint(uint8_t *buf, int n);
 //  - bytes of code in <size>
 //
 // fatal error open/read of <name> fails.
-uint8_t *read_file(unsigned *size, const char *name);
-// same as above, but returns 0 if can't open.
-uint8_t *read_file_canfail(unsigned *size, const char *name);
+void *read_file(unsigned *size, const char *name);
 
+// same as above, but returns 0 if can't open.
+void *read_file_canfail(unsigned *size, const char *name);
+
+// read file, expect it to be <size> bytes.
+int read_file_noalloc(const char *name, void *buf, unsigned maxsize);
 
 //
 // we give you the following.  
