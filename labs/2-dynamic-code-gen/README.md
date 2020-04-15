@@ -38,6 +38,7 @@ The key files:
 
 If you look at `main` you'll see five parts to build --- each is pretty
 simple, but it gives you a feel for how the more general tricks are played:
+
   0. Define the environment variable `CS240LX_2021_PATH` to be where your
      repo is.  For example:
         
