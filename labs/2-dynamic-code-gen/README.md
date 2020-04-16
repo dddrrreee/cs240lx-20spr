@@ -60,3 +60,34 @@ simple, but it gives you a feel for how the more general tricks are played:
 
 Congratulations, you have the `hello world` version of a bunch of neat
 tricks.  We will build these out more next lab and use them.
+
+### Part 1: write a `hello world`
+
+Generate a routine to call `printk("hello world\n")` and return.
+  - `code/1-hello` has the starter code.
+
+Note: to help figure things out, you should:
+  1. Write a C routine to call `printk` statically and return.
+  2. Look at the disassembly.
+  3. Implement the code to generate those functions.  I would suggest
+     by using the cheating approach in `code/examples`.  
+  4. To make it really simple, you might want to write exactly those
+     values you get from disassembly to make sure everything is working
+     as you expect.
+
+### Part 0: add executable headers in a backwards compatible way.
+
+[Yes, I know this is out of order]
+
+Even a the ability to stick a tiny bit of executable code in a random
+place can give you a nice way to solve problems.  As you might recall,
+in cs140e, whenever 
+
+### Part 3: make an interrupt dispatch compiler.
+
+You will
+  1. Generate the raw calls to a vector of interrupt routines.
+  2. Write timing code to see what the speedup is, with and without
+     caching.  (Careful!!!)
+  3. Write "threading" code that will jump directly from one routine
+     to another.
