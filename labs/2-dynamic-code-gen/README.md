@@ -61,12 +61,6 @@ simple, but it gives you a feel for how the more general tricks are played:
 Congratulations, you have the `hello world` version of a bunch of neat
 tricks.  We will build these out more next lab and use them.
 
-### Part 0: add executable headers in a backwards compatible way.
-
-Even a the ability to stick a tiny bit of executable code in a random
-place can give you a nice way to solve problems.  As you might recall,
-in cs140e, whenever we wanted to add a header to our pi binaries, we
-had to hack
 
 ### Part 1: write a `hello world`
 
@@ -101,6 +95,37 @@ Where my routines are:
     inline uint32_t arm_b(uint32_t src_addr, uint32_t target_addr);
     inline uint32_t arm_bl(uint32_t src_addr, uint32_t target_addr);
 
+### Part 2: add executable headers in a backwards compatible way.
+
+Even the ability to stick a tiny bit of executable code in a random
+place can give you a nice way to solve problems.  As you might recall,
+in cs140e, whenever we wanted to add a header to our pi binaries, we
+had to hack on the pi-side bootloader code and sometimes the unix-side 
+code.  Which was annoying.   
+
+However, with a simple hack we could have avoided all of this:  if you have
+a header for (say) 64 bytes then:
+   1. As the first word in the header, put a the 32-bit value for a ARMv6 branch 
+      (`b`) instruction that jumps over the header.
+   2. Add whatever other stuff you want to the header.
+   3. Make sure you don't add more than 64-bytes and that you pad up to 
+      64 bytes if you do less.
+   4. Done!  The ability to write a single jump instruction gives you the
+      ability to add an arbitrary header to code and have it work transparently
+      in a backwards-compatible way.
+
+To do this:
+   1. Write a new linker script that modifies `./memmap`  to have a header
+      etc.  You should store the string `hello` as the first 5 bytes of the 
+      after the jump instruction.
+   2. Modify `hello.c` to set a pointer to where this string will be in
+      memory,   The code should run and print it.
+   3. For some quick examples of things you can do in these scripts you may
+      want to look at the `memmap.header` linker script from our fuse lab,
+      which has example operations that might be useful.  The linker script
+      language is pretty bad, so if you get confused, it's their fault, not
+      yours --- keep going!   
+   4. To debug, definitely look at the `hello.list` to see what is going on.
 
 ### Part 3: make an interrupt dispatch compiler.
 
