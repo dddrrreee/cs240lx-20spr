@@ -75,6 +75,18 @@ Note: to help figure things out, you should:
      values you get from disassembly to make sure everything is working
      as you expect.
 
+
+You probably want to check your code using something like:
+
+    check_one_inst("b label; label: ", arm_b(0,4));
+    check_one_inst("bl label; label: ", arm_bl(0,4));
+    check_one_inst("label: b label; ", arm_b(0,0));
+    check_one_inst("label: bl label; ", arm_bl(0,0));
+    check_one_inst("ldr r0, [pc,#0]", arm_ldr(arm_r0, arm_r15, 0));
+    check_one_inst("ldr r0, [pc,#256]", arm_ldr(arm_r0, arm_r15, 256));
+    check_one_inst("ldr r0, [pc,#-256]", arm_ldr(arm_r0, arm_r15, -256));
+
+
 ### Part 0: add executable headers in a backwards compatible way.
 
 [Yes, I know this is out of order]
