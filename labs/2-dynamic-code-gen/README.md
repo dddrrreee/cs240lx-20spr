@@ -96,10 +96,12 @@ Where my routines are:
 ### Part 2: add executable headers in a backwards compatible way.
 
 Even the ability to stick a tiny bit of executable code in a random
-place can give you a nice way to solve problems.  As you might recall,
-in cs140e, whenever we wanted to add a header to our pi binaries, we had
-to hack on the pi-side bootloader code and sometimes the unix-side code.
-Which was annoying.
+place can give you a nice way to solve problems.  For this part, we
+use it to solve a nagging problem we had from `cs140e`.
+
+As you might recall, whenever we wanted to add a header to our pi
+binaries, we had to hack on the pi-side bootloader code and sometimes
+the unix-side code.  Which was annoying.
 
 However, with a simple hack we could have avoided all of this:  if you have
 a header for (say) 64 bytes then:
