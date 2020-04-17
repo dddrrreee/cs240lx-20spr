@@ -121,15 +121,16 @@ a header for (say) 64 bytes then:
 
 More detailed:
    1. Write a new linker script that modifies `./memmap`  to have a header
-      etc.  You should store the string `hello` as the first 5 bytes of the 
+      etc.  You should store the string `hello` with a 0 as the first 6 bytes of the 
       after the jump instruction.
    2. Modify `hello.c` to set a pointer to where this string will be in
-      memory,   The code should run and print it.
+      memory.  The code should run and print it.
    3. For some quick examples of things you can do in these scripts you may
       want to look at the `memmap.header` linker script from our fuse lab,
       which has example operations that might be useful.  The linker script
       language is pretty bad, so if you get confused, it's their fault, not
-      yours --- keep going, try google, etc.   
+      yours --- keep going, try google, etc.     We don't need much for this
+      lab's script, so it shouldn't be too bad.
    4. To debug, definitely look at the `hello.list` to see what is going on.
 
 ### Part 3: make an interrupt dispatch compiler.
