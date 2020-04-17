@@ -132,9 +132,49 @@ More detailed:
 
 ### Part 3: make an interrupt dispatch compiler.
 
-You will
-  1. Generate the raw calls to a vector of interrupt routines.
-  2. Write timing code to see what the speedup is, with and without
-     caching.  (Careful!!!)
-  3. Write "threading" code that will jump directly from one routine
-     to another.
+We now do a small, but useful OS-specific hack.  In "real" OSes you
+often have an array holding interrupt handlers to call when you get an interrupt.
+This lets you dynamically register new handlers, but adds extra overhead
+of traversing the array and doing (likely mis-predicted) indirect
+function calls.  If you are trying to make very low-latency interrupts
+--- as we will need when we start doing trap-based code monitoring ---
+then it would be nice to get rid of this overhead.
+
+We will use dynamic code generation to do this.  You will write an
+`int_compile` routine that, given a vector of handlers, generates a
+single trampoline routine that does hard-coded called to each of these
+in turn.  This will involve:
+  1. Saving and restoring the `lr` and doing `bl` as you did in the 
+     `hello` example.
+  2. As a hack, you pop the `lr` before the last call and do a
+     `b` to the last routine rather than a `bl`.
+
+To make it even faster you can do "jump threading" where instead of
+the interrupt routines returning back into the trampoline, they directly jump to
+the next one.  For today, we will do this in a very sleazy way, using
+self-modifying code.  
+
+Assume we want to call:
+
+    int0();
+    int1();
+    int2();
+
+We:
+   1. Iterate over the instructions in `int0` until we find a `bx lr`.
+   2. Compute the `b` instruction we would do to jump from that location
+      in the code to `int1`.
+   3. Overwrite the `bx lr` with that value.
+   4. Do the same for `int1`.
+   5. Leave `int2` as-is.   
+
+Now, some issues:
+  1. We can no longer call `int0`, `int1` and `int2`  because we've modified
+     the executable.
+  2. The code might have have multiple `bx lr` calls or might have data
+     in it that looked like it when it should not have.
+  3. If we use the instruction cache, we better make sure to flush it or at 
+     least the address range of the code.
+
+There are hacks to get around (1) and (2) but for expediency we just
+declare success, at least for this lab.
