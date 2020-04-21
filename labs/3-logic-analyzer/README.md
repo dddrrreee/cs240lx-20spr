@@ -141,9 +141,9 @@ tuesday?) where we award a "cs240lx` Alpha hacker" badge to whomever:
 Our first step is to get a simple, "correct" but not super accurate tool.
 This gives you something to compare against as you make it better.
 
-To make things simple, I've put in some skeleton code and `Makefile`s
-but as always, you're adults, so you're more than welcome to ignore our
-code and write everything from scratch.
+To make things simple, I've put in some skeleton code in the `code`
+directory.  However, as always, you're adults, so you're more than
+welcome to ignore our code and write everything from scratch.
 
 Basics:
    1. If you look in `code/1-simple` there are two directories,
@@ -155,7 +155,7 @@ Basics:
       large, and as you get more efficient / accurate, see how far you can 
       reduce this value.
 
-   3. Implement your first logic analyzer in `logic` which
+   3. Implement your first logic analyzer in `scope` which
       will record when the transitions occurs and, after no 
       transition for 1 second, print out the ones that happened.
       It "cheats" and also uses `CYCLE_PER_FLIP` (which it won't know
