@@ -81,14 +81,15 @@ The fact that our pi-analyzer is an "air-gapped" system seperate from
 the pi we check makes it much easier to guarantee it detects any timing
 mistake. Putting these checks in the checked-pi itself gives much less
 confidence because the checks will be influenced by the system they monitor.
-    * Footnote: at the risk of typing farcial bullshit, I think you can
-    look at the problems of checking timing constraints using the same
-    system you are monitoring as a sort-of dual of Heisenberg's principle
-    --- rather than our measurements perturbing the measured phenomea, the
-    measured phenomena can perturb our measurements.  Or, as anticipated
-    by Nietche, as our system looks into the abyss, the abyss looks into
-    it as well.  It's easier to stick an air-gap between them, not worry
-    about new age philosophical stuff, and go to the next problem.
+
+  * Footnote: at the risk of typing farcial bullshit, I think you can
+  look at the problems of checking timing constraints using the same
+  system you are monitoring as a sort-of dual of Heisenberg's principle
+  --- rather than our measurements perturbing the measured phenomea, the
+  measured phenomena can perturb our measurements.  Or, as anticipated
+  by Nietche, as our system looks into the abyss, the abyss looks into
+  it as well.  It's easier to stick an air-gap between them, not worry
+  about new age philosophical stuff, and go to the next problem.
 
 -----------------------------------------------------------------
 ### PRELAB
