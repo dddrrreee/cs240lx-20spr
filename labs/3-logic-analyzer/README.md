@@ -70,8 +70,7 @@ Example errors it can diagnose:
 More  generally, your pi-analyzer can be used to check / debug
 timing-sensitive parts of your OS code.  For example, when we 
 build a simple real-time scheduler, you can check it by:
-  1. Associate each thread with a GPIO pin;
-  2. and each pin with the thread's scheduling constraints.  
+  1. Associate each thread with a GPIO pin and each pin with the thread's scheduling constraints.  
   3. As the system runs, your analyzer can monitor that each pin goes
      high or low at the correct times.
 
@@ -82,7 +81,6 @@ The fact that our pi-analyzer is an "air-gapped" system seperate from
 the pi we check makes it much easier to guarantee it detects any timing
 mistake. Putting these checks in the checked-pi itself gives much less
 confidence because the checks will be influenced by the system they monitor.
-
     * Footnote: at the risk of typing farcial bullshit, I think you can
     look at the problems of checking timing constraints using the same
     system you are monitoring as a sort-of dual of Heisenberg's principle
