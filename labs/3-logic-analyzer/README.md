@@ -82,7 +82,7 @@ the pi we check makes it much easier to guarantee it detects any timing
 mistake. Putting these checks in the checked-pi itself gives much less
 confidence because the checks will be influenced by the system they monitor.
 
-  * Footnote: at the risk of typing farcial bullshit, I think you can
+  - Footnote: at the risk of typing farcial bullshit, I think you can
   look at the problems of checking timing constraints using the same
   system you are monitoring as a sort-of dual of Heisenberg's principle
   --- rather than our measurements perturbing the measured phenomea, the
