@@ -94,8 +94,8 @@ confidence because the checks will be influenced by the system they monitor.
 -----------------------------------------------------------------
 ### PRELAB
 
-  1. Setup your second pi so that it can bootload, just like your first and  
-     that you can attach both pi's at once to your laptop*
+  1. Setup your second pi so that it can bootload, just like your first
+     and  that you can attach both pi's at once to your laptop.
   2. Make sure you have female-to-female wires to hook them together.
   3. Most of today's lab is getting `gcc` to emit good code. Sometimes its worth tricking
      it into not doing something dumb, occasionally it is easier to just use inline 
