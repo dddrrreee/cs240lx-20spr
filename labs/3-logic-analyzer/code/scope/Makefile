@@ -20,7 +20,7 @@ OBJS := $(patsubst %.c, %.o, $(SOURCES))
 # add all the .h's as dependencies, libpi and the makefile.
 DEPS := $(MEMMAP) $(LPI)  $(wildcard ./*.h) ../scope-constants.h ./Makefile
 
-all: libpi $(OBJS) $(NAME).bin run
+all: libpi $(OBJS) $(NAME).bin # run
 
 libpi: 
 	@ # @make -s -C $(LPP)

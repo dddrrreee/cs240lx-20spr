@@ -20,7 +20,7 @@ CFLAGS += -O3
 DEPS := $(MEMMAP) $(LPI) $(wildcard ./*.h) ./Makefile  ../scope-constants.h
 
 # uncomment the different tests.
-all: libpi $(OBJS) $(NAME).bin run
+all: libpi $(OBJS) $(NAME).bin # run
 
 libpi: 
 	@ # @make -s -C $(LPP)

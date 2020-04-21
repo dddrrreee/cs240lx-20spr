@@ -26,7 +26,7 @@ take these kind of timings.
 
 Interestingly, it appears with a bit of code and a $20 pi, we can also
 easily beat specialized hardware logic analyzers.  For example --- as far
-as I can tell as a novice user --- the widely-used $400 saleae analyzer
+as I can tell as a novice user --- the widely-used $400 Saleae analyzer
 has orders of magnitude less resolution.  Also, their claim to fame is
 that they can measure multiple inputs (around 16 I believe) and have used
 custom FPGA logic to do so.  However, we can get the same effect, with
@@ -77,17 +77,17 @@ build a simple real-time scheduler, you can check it by:
 This method is a harsh, difficult to fool method for immediately
 detecting mistakes.
 
-The fact that our pi-analyzer is an "air-gapped" system seperate from
+The fact that our pi-analyzer is an "air-gapped" system separate from
 the pi we check makes it much easier to guarantee it detects any timing
 mistake. Putting these checks in the checked-pi itself gives much less
 confidence because the checks will be influenced by the system they monitor.
 
-  - Footnote: at the risk of typing farcial bullshit, I think you can
+  - Footnote: at the risk of typing farcical bullshit, I think you can
   look at the problems of checking timing constraints using the same
   system you are monitoring as a sort-of dual of Heisenberg's principle
-  --- rather than our measurements perturbing the measured phenomea, the
+  --- rather than our measurements perturbing the measured phenomena, the
   measured phenomena can perturb our measurements.  Or, as anticipated
-  by Nietche, as our system looks into the abyss, the abyss looks into
+  by Nietzsche, as our system looks into the abyss, the abyss looks into
   it as well.  It's easier to stick an air-gap between them, not worry
   about new age philosophical stuff, and go to the next problem.
 
@@ -130,7 +130,7 @@ Thursday's checkoff:
 
 
 Since we're all about fun, I propose a contest, (winner declared next
-tuesday?) where we award a "cs240lx` Alpha hacker" badge to whomever:
+Tuesday?) where we award a "cs240lx` Alpha hacker" badge to whomever:
 
   - Improves accuracy to the highest absolute level.
   - Similarly: for whoever can write the fastest UART protocol.
@@ -171,7 +171,7 @@ I'd suggest:
      analyzer-pi will mark pin 21 as an input, checked-pi will mark it
      as an output.
 
-     NOTE: In the future if you monitor a system that has a seperate
+     NOTE: In the future if you monitor a system that has a separate
      source of power you would need to (1) share ground and (2) make sure
      its output the voltage is around 3v (higher and we'd fry the pi,
      lower and we might not detect it).
@@ -211,8 +211,8 @@ On the negative side:
 
 It's probably simplest to work on variance first and ignore accuracy.
 
-  1. Make your test signal generate as consisently as possible.
-  2. Make your logic analyzer record as consisently as possible.
+  1. Make your test signal generate as consistently as possible.
+  2. Make your logic analyzer record as consistently as possible.
 
 Making something fast is different from making it have low-variance.
 However, there is a relationship here.  Ideally, as soon as a pin
@@ -230,10 +230,10 @@ introducing a large amount of error before we've done anything else.
 
 I will say, the most common mistake in improving code is having fancy
 theories, and doing lots of stuff before you actually measure.  I'd suggest:
-  1. Try to figure out simple things to improve and test your hypothesis
+  1. Try to figure out simple, important things to improve and test your hypothesis
      by measure at each step of the way that things are improving.
      You'll want multiple runs.
-  2. Always look at the machine code. If it's too hard to figure out, seperate out
+  2. Always look at the machine code. If it's too hard to figure out, separate out
      smaller kernels to see what is going on.
   3. Think about what is the critical path.  There are many pieces about this you can 
      improve that have little effect.  Get the right thing done.
@@ -261,7 +261,7 @@ Various tricks:
 
 
 Once you do the easy stuff, your main problem will likely be `gcc`.
-Not that if `gcc` generates slow code, this might not be a problem as
+Note that if `gcc` generates slow code, this might not be a problem as
 long as it is consistent.  However, at least for my code, `gcc` would
 sometimes do something stupid,  sometimes do something ok, thereby
 introducing variance.  On big common issue:
@@ -281,15 +281,16 @@ introducing variance.  On big common issue:
 Hypothetical approaches: Once you improve the code to the point there's
 nothing left to fix, some potential additional tricks:
 
-  1. You can actually overclock your pi by changing values in `config.txt` that we loaded
-     on the SD card.   Be careful!!   I'd save this to last.
+  1. You can actually over-clock your pi by changing values in `config.txt` that we loaded
+     on the SD card.   Be careful!!   I'd save this for last.
   2. You can perhaps be more clever about estimating error.  For example,
-  let's say it
-     takes us 100 cycles between checks if a GPIO pin changed.  The most
-     straightfoward approach after a change is to to store the value of
-     the cycle counter when we last read it.  However, this is naive:
-     the change could have occured any time since the last GPIO read.
-     Perhaps a better estimate it that it occured halfway through.
-     Even better, is to try to derive expected error using simple
-     learning or statistical estimation.  I did not do this.  But it's
-     an interesting approach to squeeze out the last bit of error.
+     let's say it takes us 100 cycles between checks if a GPIO pin
+     changed.  You are likely simply storing the raw cycle counter value
+     you did before (or right after) this load.  However, this is naive:
+     the change could have occurred any time in the 100 cycles since
+     the previous read.  Perhaps a better estimate it that it occurred
+     halfway through.  Even better, is to try to derive expected error
+     using simple learning or statistical estimation.  I did not do this.
+     But it's an interesting approach to squeeze out the last bit
+     of error.
+
