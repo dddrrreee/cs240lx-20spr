@@ -86,8 +86,7 @@ transmit byte B as follows:
   7. Write the value of bit 5 ...
   8. Write the value of bit 6 ...
   9. Write the value of bit 7 ...
-  10. Write the value of bit 8 ...
-  11. Write a 1 (stop) for at-least `T` cycles.
+  10. Write a 1 (stop) for at-least `T` cycles.
 
 If you pause and look at the above list, you will notice it *is almost
 completely identical to you test generator code from the last lab,*
@@ -154,7 +153,7 @@ bit-banging is slow, costly, error prone.  However, bit-banging has
 several nice features, and in many cases they are completely wrong.
 
   1. It is simple.  You don't have to figure out datasheets and
-     write a device driver for the peripheral you you are trying to coax
+     write a device driver for the peripheral you are trying to coax
      into doing the right thing: just blast out the 0s and 1s using
      GPIO pins.  As a benefit, you will get a much deeper understanding
      of whatever protocol you are building (e.g., compare your knowledge
@@ -165,10 +164,12 @@ several nice features, and in many cases they are completely wrong.
      the pi is known to be awful.  We can simply build our own cleaner
      ones.  The I2C implementation has low-power issues: same.
 
-  3. It maybe be faster!  The pi actually has a pretty beefy CPU
+  3. It may be faster!  The pi actually has a pretty beefy CPU
      compared to the processors running in the peripherals.  You may be
      able to run at much higher speeds than they can.  You can certainly
-     operate in parallel in ways that they cannot.
+     operate in parallel in ways that they cannot.  It's worth comparing
+     your final baud and bandwidth to the maximum you can specify for
+     the pi's hardware UART(s).
 
   4. As a variant of faster: bit banging can mean *we do not have to
      use memory barriers*.  Recall from the Broadcom document: every time
@@ -186,7 +187,7 @@ To make sure everything is working, first hook up your pi's and make sure
 they can see each other transitions using a trivial protocol.  Make a copy
 of your `test-gen` and change it so:
 
-   1. Each pi runs in a loop waiting  on its `RX` pin: when `RX` changes, the pi
+   1. Each pi runs in a loop for 4096 iterations waiting  on its `RX` pin: when `RX` changes, the pi
       sets its `TX` pin to the opposite value.
    2. Pick a pi to start the loop based on who reads their `RX` line as 0 first.  (This is 
       a race condition, but given human speeds, shouldn't happen in practice ---
@@ -206,6 +207,7 @@ Implement two routines as described above for a baud rate of 115200:
     int sw_uart_get8(my_sw_uart_t *uart);
 
 Notes:
+
   0. You can see `cs140-src/sw-uart.h` for an example structure definition.  Note
      you cannot divide on our pi setup, so you'll have to make sure to do division
      by a constant so that compiler can replace it.
