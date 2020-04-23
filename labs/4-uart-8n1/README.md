@@ -70,15 +70,15 @@ First, pick a baud rate `R` (bits per second) and compute the cycles per bit:
      runs at `700MHz` so that is `700 * 1000 * 1000` cycles per second
      or about `6076` cycles per bit.
 
-Second, initialize the `TX` line at startup to be high (`1`).
+Second, initialize the `TX` line at startup to be high (1).
 
 Finally, given the cycles per bit `T` (from above: `T=6076` cycles),
 transmit byte B as follows:
 
-  1. Write a 0 (start) for T.  (Why? Because it will always cause a transition given
-     the TX line's default state of 1; this allows the receive to detect when you 
+  1. Write a 0 (start) for `T` cycles.  (Why? Because it will always cause a transition given
+     the TX line's default state of 1; this allows the receiver to detect when you 
      start sending.)
-  2. Write the value of bit 0 for T cycles (0 if it is 0, 1 if it is 1).
+  2. Write the value of bit 0 for `T` cycles (0 if it is 0, 1 if it is 1).
   3. Write the value of bit 1 ...
   4. Write the value of bit 2 ...
   5. Write the value of bit 3 ...
@@ -87,7 +87,7 @@ transmit byte B as follows:
   8. Write the value of bit 6 ...
   9. Write the value of bit 7 ...
   10. Write the value of bit 8 ...
-  11. Write a 1 (stop) for at-least T.
+  11. Write a 1 (stop) for at-least `T` cycles.
 
 If you pause and look at the above list, you will notice it *is almost
 completely identical to you test generator code from the last lab,*
