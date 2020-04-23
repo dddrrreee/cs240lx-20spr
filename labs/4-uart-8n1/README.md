@@ -266,9 +266,10 @@ Checkoff (from above):
 ----------------------------------------------------------------
 ### Extension: Speed: custom protocol.
 
-A downside of the protocol is that the baud rate is hard-wired in.
-You may be able to go (much) fast and at other times, may run much slower.
-It also can transmit when a receiver is not ready.
+Two downsides of the UART protocol:
+  1. The baud rate is hard-wired in.  You may be able to go (much) fast and at other 
+     times, may run much slower.
+  2. It also can transmit when a receiver is not ready and drop bits.
 
 Design a custom network protocol that solves these problems.
 You should be able to send bits faster than ours and only transmit when 
