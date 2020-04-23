@@ -17,8 +17,8 @@ is surprisingly simple.  You will:
 
   2. Write an 8n1-UART implementation to send and receive messages between the 
      pi's (described more below).
-     For background, [Wikipedia's 8n1-UART protocol writeup is reasonable]
-     (https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter).
+     For background, [Wikipedia's 8n1-UART protocol writeup is 
+     reasonable](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter).
 
   3. The main fragility of this approach is that since the GPIO pin's
      have no buffering, if a message arrives when the recipient is not
@@ -197,9 +197,7 @@ of your `test-gen` and change it so:
 ----------------------------------------------------------------
 ## Part 1: write a software-UART implementation.
 
-Implement two routines
-as described above 
-for a baud rate of 115200:
+Implement two routines as described above for a baud rate of 115200:
 
     // transmit <b> 
     int sw_uart_put8(my_sw_uart_t *uart, uint8_t b);
