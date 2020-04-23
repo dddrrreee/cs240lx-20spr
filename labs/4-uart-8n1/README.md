@@ -196,7 +196,7 @@ of your `test-gen` and change it so:
       I'm curious what it is!
 
 ----------------------------------------------------------------
-## Part 1: write a software-UART implementation.
+### Part 1: write a software-UART implementation.
 
 Implement two routines as described above for a baud rate of 115200:
 
@@ -225,17 +225,18 @@ NOTE:
   - When you are debugging, if you put in a `printk` on the receiver, you
     can miss incoming bits.  Only print (or do things that are expensive)
     when you are not expecting input.  GPIO pins do not buffer input.
-    This is a common mistake: I said this many many times in cs140e, but
+    This is a common mistake: I said this many many times in cs140e (and I've
+    already said it twice in this document!), but
     at least 1/3 of all students ran into this issue at different points.
 
 Great!  That is the main big conceptual hurdle.  The rest of the time you'll
 just be making your code better.
 
 ----------------------------------------------------------------
-## Part 2: increase baud rate.
+### Part 2: increase baud rate.
 
 As mentioned above, your UART implementation will be useful later.
-For example, when we use RF sensors to do wireless networking.  So it
+So it
 is worth making it fast --- the faster it is, the more time there is to
 compute other stuff on the pi.
 
@@ -249,7 +250,7 @@ Checkoff (from above):
   2. Your scope timing diagram makes sense.
 
 ----------------------------------------------------------------
-#### Speed: increase bandwidth.
+### Part 3: increase bandwidth.
 
 As mentioned above, we can set and read many pins in parallel:
 
