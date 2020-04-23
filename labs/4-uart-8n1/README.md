@@ -20,7 +20,7 @@ is surprisingly simple.  You will:
      For background, [Wikipedia's 8n1-UART protocol writeup is 
      reasonable](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter).
 
-  3. The main fragility of this approach is that since the GPIO pin's
+  3. The main fragility of this approach is that since the GPIO pins
      have no buffering, if a message arrives when the recipient is not
      listening, the message will disappear.   As an extension: modify
      your pi so that when a message arrives, it receives an interrupt
@@ -43,16 +43,16 @@ You need:
      the traces from more than one pin.
 
 There are many extensions (listed below).  Feel free to do some for the
-shadow A+ grade!  Two key ones:
+shadow A+ grade!  A few key ones:
 
-  1. Tune the sw-uart so you can do at least 1Mb per second between two pi's for
-     one pin.
-  2. Use interrupts on the co-processor pi to get notified when to download the
-     log and start over.
-  3. Devise a custom network protocol that can send bits faster than ours. You should
+  1. Devise a custom network protocol that can send bits faster than ours. You should
      consider making it so that its easy to get one bit at a time in the interrupt
      handler.
-
+  2. Tune the sw-uart so you can do at least 1Mb per second between two pi's for
+     one pin.
+  3. See how far you can overclock the pi by modifying `config.txt` on the 
+     SD card to get even more performance :).
+  4. Make the approach interrupt-based so we do not lose incoming characters.
 
 ----------------------------------------------------------------
 ### A quick and dirty guide to making 8n1 UART using GPIO
