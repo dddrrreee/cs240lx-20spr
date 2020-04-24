@@ -52,7 +52,7 @@ static void client(unsigned tx, unsigned rx, unsigned n) {
 // send N samples at <ncycle> cycles each in a simple way.
 static void ping_pong(unsigned tx, unsigned rx, unsigned n) {
     gpio_set_output(tx);
-    gpio_set_output(rx);
+    gpio_set_input(rx);
 
     if(!gpio_read(rx))
         server(tx,rx,n);
