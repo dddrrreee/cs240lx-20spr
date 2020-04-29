@@ -59,6 +59,7 @@ static void checktreset(unsigned);
 static void time_usec(int pin) {
 
 #define run(str, f,exp,pin) do {			\
+    asm volatile (".align 4");                  \
 	unsigned b = get_raw_time();		\
 	f(pin); f(pin); f(pin); f(pin); f(pin);		\
 	f(pin); f(pin); f(pin); f(pin); f(pin);		\
