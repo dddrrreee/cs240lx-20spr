@@ -7,7 +7,8 @@ endif
 
 include $(CS140E_PATH)/libpi/includes.mk
 
-CFLAGS += -Wno-unused-function -Wno-unused-variable  -falign-functions=16
+CFLAGS += -Wno-unused-function -Wno-unused-variable  
+#-falign-functions=16
 
 # if you want to compile everything in a directory, do something like this.
 SOURCES := $(wildcard ./*.c)
