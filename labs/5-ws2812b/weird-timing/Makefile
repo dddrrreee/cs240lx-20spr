@@ -49,7 +49,7 @@ $(OBJS): $(DEPS)
 	$(OCP) $*.elf -O binary $*.bin
 
 run:
-	my-install /dev/ttyUSB0 ./$(NAME).bin
+	my-install ./$(NAME).bin
 
 tags: 
 	ctags *.[chSs] $(LPP)/*.[ch] $(LPP)/*.[chSs]
