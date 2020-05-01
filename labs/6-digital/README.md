@@ -22,10 +22,9 @@ We'll do the following:
   1. [allegro a1104 hall effect sensor](1-hall-effect) that tells
      you when a magnet is touching it.
 
-  2. [Mechanical relay that you can use to turn on larger voltages](4-relay/README.md)
+  2. [Mechanical relay that you can use to turn on larger voltages](2-relay/README.md)
 
-  3. [TSOP IR sensor](2-tsop) an IR sensor that gives you a signal when it detects
-     an IR LED. Use this to control an LED on another pi.
+  3. [hc-sr04 sonar device](3-sonar/README.md)  which uses sound to measure distance.
 
 PRELAB:
 

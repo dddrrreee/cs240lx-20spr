@@ -4,7 +4,7 @@
 # ah: for test, doesn't work for us b/c we don't have the code...
 #
 # also it is tricky if they swap with our code and their code.
-SUBDIRS=  1-hall-effect 2-hc-sr501
+SUBDIRS=  0-pullup 1-hall-effect 3-sonar
 
 .PHONY: all check clean
 all check clean: $(SUBDIRS)
