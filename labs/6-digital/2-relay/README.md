@@ -9,3 +9,4 @@ Checkin:
   2. Measure how quickly the relay can turn on and off.  For this you will connect to an input
      pin of the pi: set the relay on, and count how many cycles til the pin goes on.  Do the
      same for off.
+  3. Use the opto-coupler.
