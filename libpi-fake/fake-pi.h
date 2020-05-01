@@ -17,6 +17,8 @@ unsigned fake_random_init(void);
 
 // setup the current "time".
 void fake_time_init(unsigned init_time);
+// call to move time forward.
+unsigned fake_time_inc(unsigned inc);
 
 #define __RPI_ASSERT_H__
 #include "rpi.h"
@@ -32,5 +34,6 @@ void fake_time_init(unsigned init_time);
 void notmain(void);
 
 extern unsigned fake_time_usec;
+
 
 #endif
