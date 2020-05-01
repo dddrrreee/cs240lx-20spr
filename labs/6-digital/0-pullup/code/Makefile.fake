@@ -48,7 +48,7 @@ libfake:
 
 
 clean:
-	rm -f *.o *~  *.bak $(NAME) *.out blink
+	rm -f *.o *~  *.bak $(NAME)  blink
 	make -C $(FLPI) clean
 
 .PHONY: all clean libfake
