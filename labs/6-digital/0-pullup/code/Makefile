@@ -29,8 +29,11 @@ LXPI = $(LXP)/liblxpi.a
 LIBS = $(LXPI) $(LPI)  
 
 # uncomment the different tests.
-all: libs $(OBJS) on.bin off.bin # $(NAME).bin # run 
+all: libs $(OBJS) on.bin off.bin # fake-libpi
     
+fake-libpi:
+	make -f Makefile.fake
+
 libs: 
 	@ # @make -s -C $(LPP)
 	make -C $(LPP)
@@ -60,7 +63,7 @@ tags:
 clean:
 	rm -rf $(BUILD_DIR) $(NAME) *~ tags *.o *.bin *.elf *.list *.img Makefile.bak  *.d
 
-.PHONY: libs all tags clean run
+.PHONY: libs all tags clean run fake-libpi
 
 # stop make from deleting these suffix'd files.
 .PRECIOUS: %.list %.elf

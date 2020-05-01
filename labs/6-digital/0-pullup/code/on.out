@@ -1,0 +1,27 @@
+TRACE:fake_random:random called=1 times, value=1804289383
+TRACE:uart_init:uart
+TRACE:gpio_set_input:pin=21
+TRACE:dev_barrier:dev barrier
+	TRACE:PUT32(0x20200094)=0x2
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200098)=0x200000
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200094)=0x0
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200098)=0x0
+TRACE:delay_us:delay_us = 150usec
+TRACE:dev_barrier:dev barrier
+PI:pullup=21, this is sticky: touch red lead to this pin and black to ground: should see a ~3V reading on multimeter
+TRACE:gpio_set_input:pin=21
+TRACE:dev_barrier:dev barrier
+	TRACE:PUT32(0x20200094)=0x1
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200098)=0x100000
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200094)=0x0
+TRACE:delay_us:delay_us = 150usec
+	TRACE:PUT32(0x20200098)=0x0
+TRACE:delay_us:delay_us = 150usec
+TRACE:dev_barrier:dev barrier
+PI:pulldown=20, this is sticky: touch black lead to this pin, and red to 3v: should see a ~3V reading on multimeter
+TRACE:clean_reboot:clean reboot
