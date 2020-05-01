@@ -1,23 +1,23 @@
 TRACE:fake_random:random called=1 times, value=1804289383
 TRACE:uart_init:uart
 TRACE:dev_barrier:dev barrier
-	TRACE:PUT32(0x20200094)=0x0
+TRACE:put32:PUT32(0x20200094)=0x0
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200098)=0x200000
+TRACE:put32:PUT32(0x20200098)=0x200000
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200094)=0x0
+TRACE:put32:PUT32(0x20200094)=0x0
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200098)=0x0
+TRACE:put32:PUT32(0x20200098)=0x0
 TRACE:delay_us:delay_us = 150usec
 TRACE:dev_barrier:dev barrier
 TRACE:dev_barrier:dev barrier
-	TRACE:PUT32(0x20200094)=0x0
+TRACE:put32:PUT32(0x20200094)=0x0
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200098)=0x100000
+TRACE:put32:PUT32(0x20200098)=0x100000
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200094)=0x0
+TRACE:put32:PUT32(0x20200094)=0x0
 TRACE:delay_us:delay_us = 150usec
-	TRACE:PUT32(0x20200098)=0x0
+TRACE:put32:PUT32(0x20200098)=0x0
 TRACE:delay_us:delay_us = 150usec
 TRACE:dev_barrier:dev barrier
 PI:pin 21 and 20 are reset
