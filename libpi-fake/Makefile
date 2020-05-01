@@ -2,8 +2,10 @@ TARGET = libpi-fake.a
 LPI = $(CS140E_PATH)/libpi/
 
 # we could use time directly: you will have to build a PUT32 that returns something sensible.
-#       SOURCES := $(wildcard ./*.c) $(LPI)/cs140e-src/timer.c
-SOURCES := $(wildcard ./*.c) 
+# if you want to use raw rpi code, put it before our replace
+RAW_PI_SOURCE =  $(LPI)/cs140e-src/timer.c 
+SOURCES := $(RAW_PI_SOURCE) $(wildcard ./*.c) 
+# SOURCES := $(wildcard ./*.c) 
 OBJS := $(patsubst %.c, %.o, $(SOURCES))
 
 # add any other object files here.
