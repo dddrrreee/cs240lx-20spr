@@ -7,8 +7,8 @@ Checksums:
     3650815126 812 off.out
 
     # to run yours
-    % ./on.out | cksum
-    % ./off.out | cksum
+    % ./on.fake | cksum
+    % ./off.fake | cksum
 
 
 In cs140e we largely ignored an important issue: when many devices
