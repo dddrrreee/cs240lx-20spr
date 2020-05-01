@@ -1,5 +1,16 @@
 ### Implement `gpio_set_pullup` and `gpio_set_pulldown`
 
+Checksums:
+    % cksum on.out
+    4055435488 1074 on.out
+    % cksum off.out
+    3650815126 812 off.out
+
+    # to run yours
+    % ./on.out | cksum
+    % ./off.out | cksum
+
+
 In cs140e we largely ignored an important issue: when many devices
 are "open" (not signaling anything) they do not guarantee a stable,
 well-defined output signal.  Thus, you will have to "pull" the signal
