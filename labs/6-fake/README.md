@@ -1,4 +1,4 @@
-## Lab: digital devices
+## Lab: when fake is better than real.
 
 ***NOTE: unless it's very clear to do otherwise, only connect these sensors to 3v, not 5v***
 ***NOTE: unless it's very clear to do otherwise, only connect these sensors to 3v, not 5v***
