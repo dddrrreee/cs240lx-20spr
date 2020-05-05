@@ -238,14 +238,14 @@ We'll first make a "high-level" version of your fake pi library:
 
   3. Put fake vesions of each undefined routine in
      the directory `libpi-fake` (at the top of the class directory).
-     Write your routines so they use the provided `trace` macro to print
-     identical messages to the output provided in the provided files
-     `on.out` and `off.out`.   Each routine should be in a new file ---
-     do not put them in the `fake-pi.h` header nor in any of the existing
-     files.  The (linker-specific) reason for this will be clearer later,
-     but for the moment, we want to put these routines in their own file.
-     You do not have to modify the `Makefile`,
-     it will compile the new files automatically.
+     Write your routines so they use the provided `trace` macro (in
+     `fake-pi.h`) to print identical messages to the output provided in
+     the provided files `on.out` and `off.out`.   Each routine should
+     be in a new file --- do not put them in the `fake-pi.h` header
+     nor in any of the existing files.  The (linker-specific) reason
+     for this will be clearer later, but for the moment, we want to put
+     these routines in their own file.  You do not have to modify the
+     `Makefile`, it will compile the new files automatically.
 
   4. When compilation succeeds, it will produce `on.fake` and
      `off.fake`.  If you run `on.fake` you should get the same output as
