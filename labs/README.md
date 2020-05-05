@@ -15,20 +15,50 @@ and there will be plenty of extensions for each to keep you busy with
 new tricks.
 
 ---------------------------------------------------------------------
-### Part 1: Initial Unix-side labs
+### Part 1: Compilation tricks
 
   - [1-trusting-trust](1-trusting-trust): You'll implement a simplified
     version of Ken Thompson's evil compiler
     hack that we described in his Turing award lecture.
 
----------------------------------------------------------------------
-### Part 2: Devices
 
-We have a reasonable cohort from cs140e, but also people who have not
-taken it.  I'd like to make sure the latter gets up to speed while the
-former isn't going over things they know.  To hopefully accomplish
-this we will do a set of labs building as many device drivers as we
-can in two weeks.  
+  - [2-dynamic-code-gen](2-dynamic-code-gen/README.md): you'll learn
+    how to generate executable machine code at runtime and how to 
+    use this trick to do neat stuff.
+
+---------------------------------------------------------------------
+### Part 2: fancy tricks with timing-accurate code 
+
+  - [3-logic-analyzer](3-logic-analyzer/README.md): the pi is fast enough,
+    and flexible enough that we can easily build a logic analyzer that
+    (as far as I can tell) is faster --- and certainly more flexible ---
+    then commercial logic analyzers that cost hundreds of dollars.
+    You'll learn how to write consistently nanosecond accurate code.
+
+  - [4-uart-8n1](4-uart-8n1/README.md): 
+    Now that you can write and verify timing-accurate code, we are going
+    to use this to make a simple, fast pin-to-pin network on your pi and
+    see how efficient you can make it, both in reducing latency and in
+    increasing bandwidth.
+
+  - [5-ws2812b](5-ws2812b/README.md) you'll write nanosecond accurate
+    code to control a WS2812B light string.  The WS2812B is fairly common,
+    fairly cheap.  Each pixel has 8-bits of color (red-green-blue)
+    and you can turn on individual lights in the array.
+
+---------------------------------------------------------------------
+### Part 3: Devices
+
+   - [6-fake](6-fake/README.md): you'll write low level GPIO code to
+     make device output cleaner, and then build a fake libpi that lets you
+     run your pi code, unaltered, on UNIX and cross-check its side-effects
+     against everyone else.
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+Be warned: the labs below have not been updated.
+
 
 Additional benefits:
   1. 90% of OS code is device drivers, so it makes sense to learn how

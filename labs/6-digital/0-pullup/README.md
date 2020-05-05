@@ -1,15 +1,13 @@
-### Implement `gpio_set_pullup` and `gpio_set_pulldown`
+##  Overview
 
-Checksums:
-    % cksum on.out
-    4055435488 1074 on.out
-    % cksum off.out
-    3650815126 812 off.out
+The lab has four parts:
+  1. Implement pullup-pull down.
+  2. Check your implementation using a multi-meter.
+  3. Implement `libpi-fake` and check your implementation of (1).
+  3. As a final step, move your implementation to the CS240LX libpi.
 
-    # to run yours
-    % ./on.fake | cksum
-    % ./off.fake | cksum
-
+-------------------------------------------------------------------------------
+### Part 1: Implement `gpio_set_pullup` and `gpio_set_pulldown`
 
 In cs140e we largely ignored an important issue: when many devices
 are "open" (not signaling anything) they do not guarantee a stable,
@@ -63,7 +61,8 @@ page](http://what-when-how.com/Tutorial/topic-334jc9v/Raspberry-Pi-Hardware-Refe
 gives an easier-to-follow example than the broadcom.
 
 
-### Check your hardware / implementation with a multimeter.
+-------------------------------------------------------------------------------
+### Part 2: Check your hardware / implementation with a multimeter.
 
 With hardware we want to sanity check as much as possible.  This both:
   1. Detects hardware issues (common: mis-wiring, not-unusual: broken components), and:
@@ -106,6 +105,33 @@ So, test things with a multimeter:
      Unfortunately, we also get this reading for pins that are in their
      default state, so I'm not sure how to measure that the pulldown
      worked.
+
+-------------------------------------------------------------------------------
+### Part 3: implement `libpi-fake` and crosscheck your code.
+
+Checksums:
+
+  1. The basic Makefile
+
+    % cksum on.out
+    4055435488 1074 on.out
+    % cksum off.out
+    3650815126 812 off.out
+
+    # to run yours
+    % ./on.fake | cksum
+    % ./off.fake | cksum
+
+  2. After you link in the lipi timer by uncommenting this line in the `Makefile`
+
+       RAW_PI_SOURCE = $(LPI)/cs140e-src/timer.c
+
+     make sure to `make clean` and `make`.
+
+  3.  
+
+-------------------------------------------------------------------------------
+### Part 4: finalize.
 
 When your code works:
 
