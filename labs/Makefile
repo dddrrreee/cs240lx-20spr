@@ -4,7 +4,7 @@
 # ah: for test, doesn't work for us b/c we don't have the code...
 #
 # also it is tricky if they swap with our code and their code.
-SUBDIRS=  1-trusting-trust 6-fake
+SUBDIRS=  1-trusting-trust 2-dynamic-code-gen 3-logic-analyzer 4-uart-8n1 5-ws2812b 6-fake
 
 .PHONY: all check clean
 all check clean: $(SUBDIRS)
