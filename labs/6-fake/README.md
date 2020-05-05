@@ -95,7 +95,7 @@ Two places you can often look for the pi:
   written with back-channel knowledge.  On the other hand:
   it will have lots of extra Linux puke everywhere, and linux is far from not-buggy.
 
-  2, `dwelch76` code, which tends to be simple, but does things (such as
+  2. `dwelch76` code, which tends to be simple, but does things (such as
   eliding memory barriers) that the documents explicitly say are wrong
   (and has burned me in the past).
 
