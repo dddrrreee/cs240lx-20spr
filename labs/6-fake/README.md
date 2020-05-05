@@ -38,7 +38,7 @@ your pi code against everyone else's.  We'll extend the fakeness as the
 quarter goes on, letting you auto-check increasingly fancy pi stuff.
 After completing the lab you will:
 
-    1. Be able to check that your `gpio_pullup`, `gpio_pulldown` and
+ 1. Be able to check that your `gpio_pullup`, `gpio_pulldown` and
     `gpio_pud_off` routines are equivalant to everyone else's in the
     class by tracing all loads and stores it does and comparing this
     memory trace them to everyone else's implementation.  If two pieces
@@ -53,7 +53,7 @@ After completing the lab you will:
     modifications you do breaks it (e.g., if you rewrite it to be cleaner
     and delete a needed statement).
 
-    2. Start to understand how to emulate systems in a fake but useful way
+ 2. Start to understand how to emulate systems in a fake but useful way
     --- your system won't be that sophisticated, but is useful in that it
     gives a complete, concrete "hello world" level example of emulating
     one system on another, and the benefits from doing so.  Later you'll
