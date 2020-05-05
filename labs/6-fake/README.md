@@ -140,6 +140,7 @@ software, setting pullup-pulldown is less clear, with the added bonus
 that the words describing it in the Broadcom are super unclear.
 
 So, test things with a multimeter:
+
   0. Run `on.bin` 
 
   1. Measure the resistance of some unset pins: , I got about 50k
