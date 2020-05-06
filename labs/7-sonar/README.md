@@ -147,11 +147,12 @@ is a hint that you should allow parameterization.
 So today, you will implement two simple methods that `libpi-fake` calls:
 
     // returns 1 if it decided on a value for <val>.  otherwise 0.
-    int mem_model_get32(uint32_t *val, uint32_t addr);
+    int mem_model_get32(volatile void *addr, uint32_t *val);
 
-    // performs any side-effect on <addr> using val, returns 0 if it 
+    // performs any side-effect on <addr> using val, returns 0 if it
     // did nothing.
-    int mem_model_put32(uint32_t *addr, uint32_t val);
+    int mem_model_put32(volatile void *addr, uint32_t val);
+
 
 You should:
   1. Put in default implementations into two new files in the `libpi-fake` directory:
