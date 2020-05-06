@@ -36,4 +36,14 @@ void notmain(void);
 extern unsigned fake_time_usec;
 
 
+// client memory model
+
+// returns 1 if it decided on a value for <val>.  otherwise 0.
+int mem_model_get32(volatile void *addr, uint32_t *val);
+
+// performs any side-effect on <addr> using val, returns 0 if it
+// did nothing.
+int mem_model_put32(volatile void *addr, uint32_t val);
+
+
 #endif
