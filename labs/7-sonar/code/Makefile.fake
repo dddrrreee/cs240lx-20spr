@@ -14,7 +14,7 @@ endif
 LPI = $(CS140E_PATH)/libpi
 
 # where the fake lib pi is
-FLPI = $(CS240LX_2021_PATH)/libpi-fake.staff
+FLPI = $(CS240LX_2021_PATH)/libpi-fake
 
 # where libunix is.
 LUNIX = $(CS240LX_2021_PATH)/libunix/
