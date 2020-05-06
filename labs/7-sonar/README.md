@@ -107,7 +107,7 @@ Do the high-level version first.  Check this by:
 
 My checksum for the high-level version is:
 
-    % ./sonar.fake | cksum
+    % ./sonar.hl.fake | cksum
     2561594719 9552
 
 First 20 lines is:
@@ -140,7 +140,7 @@ This isn't that interesting.
 
 You can see this if you grep for "distance" you'll see  we never do anything as is:
 
-    % ./sonar.fake  | grep dist
+    % ./sonar.hl.fake  | grep dist
     PI:distance = 0 inches
     PI:distance = 0 inches
     PI:distance = 0 inches
