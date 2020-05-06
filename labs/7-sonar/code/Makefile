@@ -10,7 +10,7 @@ endif
 
 include $(CS140E_PATH)/libpi/includes.mk
 
-CFLAGS += -Wno-unused-function -Wno-unused-variable -falign-functions=4
+CFLAGS += -Wno-unused-function -Wno-unused-variable -falign-functions=4 -DFAKE_PI
 
 OBJS := $(patsubst %.c, %.o, $(SOURCES))
 
