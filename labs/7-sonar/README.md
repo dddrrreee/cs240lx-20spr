@@ -96,12 +96,13 @@ Expected tests and their results:
 #### High level fake pi.
 
 Your libpi should work fine "as is."  Before going further: verify that
-you get the same checksums as everyone else.  Do the high-level version first:
-   1. Comment out `RAW_PI_SOURCE` in `libpi-fake/Makefile` variable (make clean
-      and make)
-   2. Compile the sonar --- you may need to implement some undefined references.
+you get the same checksums as everyone else.  
+
+Do the high-level version first.  Check this by:
+   1. Commenting out `timer_get_usec` in `sonar.c` (you will put this back later).
+   2. running `make` You may need to implement some undefined references.
    3. Synonyms: some people call `gpio_set_on(pin)` others call
-      `gpio_write(pin,1)` --- both will do the same thing.   Just make `gpio_set_on` to 
+      `gpio_write(pin,1)` --- both will do the same thing.   Just make `gpio_set_on` to
        call `gpio_write` instead.
 
 My checksum for the high-level version is:
@@ -159,33 +160,65 @@ This is a huge amount of work and will typically fail anyway, since most
 people can't anticipate all possible situations.
 
 As a first cut,  we'll exploit the linker and add a simple routine in
-the driver --- it's protectd by a preprocessor flag `RPI_UNIX` only
-defined during fake compilation:
+the driver.  Uncomment out `timer_get_usec` in `sonar.c` --- you'll
+notice it's s protected by the preprocessor flags `RPI_UNIX` and
+`FAKE_HIGH_LEVEL` only defined during fake compilation for high-level:
 
     #ifdef RPI_UNIX
-
-    #if 0
-
     #   include "fake-pi.h"
+    
+    #   ifdef FAKE_LOW_LEVEL
+
+        ...
+
+    #   elif defined (FAKE_HIGH_LEVEL)
+
         unsigned timer_get_usec(void) {
             unsigned t = fake_time_inc( fake_random() % (timeout * 2) );
             trace("getting usec = %dusec\n", t);
             return t;
         }
 
-    #endif
+    #   else
+    
+    #       error "Impossible: must define FAKE_HIGH_LEVEL or FAKE_LOW_LEVEL"
+    
+    #   endif
     
     #endif
 
+You now have a definition of `timer_get_usec` customized to our domain
+--- we want to timeout some number of times to test that code, and also
+cover a wider range of distances than 0.
 
-Remove the `#if 0` --- you now have a definition of `timer_get_usec`
-customized to our domain --- we want to timeout some number of times to
-test that code, and also cover a wider range of distances than 0.
+After this is set, we get:
 
-For this set, we get:
-
-    % ./sonar.fake | cksum
+    % ./sonar.hl.fake | cksum
     196199192 21103
+
+
+My first 20 lines:
+
+    TRACE:fake_random:random called=1 times, value=1804289383
+    TRACE:uart_init:uart
+    PI:starting sonar!
+    TRACE:gpio_set_output:pin=20
+    TRACE:gpio_write:pin=20, val=0
+    TRACE:gpio_set_input:pin=21
+    TRACE:gpio_set_pulldown:pin=21
+    PI:sonar ready!
+    TRACE:gpio_write:pin=20, val=1
+    TRACE:delay_us:delay_us = 10usec
+    TRACE:gpio_write:pin=20, val=0
+    TRACE:delay_us:delay_us = 148usec
+    TRACE:fake_random:random called=2 times, value=846930886
+    TRACE:timer_get_usec:getting usec = 1804330427usec
+    TRACE:fake_random:random called=3 times, value=1681692777
+    TRACE:gpio_read:pin=21, returning=1
+    TRACE:fake_random:random called=4 times, value=1714636915
+    TRACE:timer_get_usec:getting usec = 1804397342usec
+    TRACE:fake_random:random called=5 times, value=1957747793
+    TRACE:timer_get_usec:getting usec = 1804475135usec
 
 
 #### Low-level fake-pi
@@ -261,6 +294,22 @@ Make sure you get the same results as everyone else!
     `PUT32` and `GET32` means we can also control it thoroughly by
     overriding these.  I might go so far as to assert that there is
     likely a theorem here of some kind.
+
+
+To run the low level:
+
+  1. Change the Makefile so you use `FAKE_LOW_LEVEL`:
+
+        LEVEL := FAKE_LOW_LEVEL
+        # LEVEL := FAKE_HIGH_LEVEL
+
+
+  2.  For the low level I got:
+
+        % ./sonar.fake | wc
+        1309    3110   63119
+        % ./sonar.fake | cksum
+        748725060 63119
 
 ----------------------------------------------------------------------
 ### Extension 1: use two sonar's to more accurately estimate position.
