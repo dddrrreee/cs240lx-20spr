@@ -295,21 +295,33 @@ Make sure you get the same results as everyone else!
     overriding these.  I might go so far as to assert that there is
     likely a theorem here of some kind.
 
+For the low-level I have:
 
-To run the low level:
+    ./sonar.ll.fake | cksum
+    1294477244 51364
 
-  1. Change the Makefile so you use `FAKE_LOW_LEVEL`:
+And the first 20 lines:
 
-        LEVEL := FAKE_LOW_LEVEL
-        # LEVEL := FAKE_HIGH_LEVEL
-
-
-  2.  For the low level I got:
-
-        % ./sonar.fake | wc
-        1309    3110   63119
-        % ./sonar.fake | cksum
-        748725060 63119
+    TRACE:fake_random:random called=1 times, value=1804289383
+    TRACE:uart_init:uart
+    PI:starting sonar!
+    TRACE:fake_random:random called=2 times, value=846930886
+    TRACE:get32:GET32(0x20200008)=0x327b23c6
+    TRACE:put32:PUT32(0x20200008)=0x327b23c1
+    TRACE:put32:PUT32(0x20200028)=0x100000
+    TRACE:fake_random:random called=3 times, value=1681692777
+    TRACE:get32:GET32(0x20200008)=0x643c9869
+    TRACE:put32:PUT32(0x20200008)=0x643c9841
+    TRACE:dev_barrier:dev barrier
+    TRACE:put32:PUT32(0x20200094)=0x1
+    TRACE:fake_random:random called=4 times, value=1714636915
+    TRACE:get32:GET32(0x20003004)=0x6b8c4aca
+    TRACE:fake_random:random called=5 times, value=1957747793
+    TRACE:get32:GET32(0x20003004)=0x6b8d7aab
+    TRACE:put32:PUT32(0x20200098)=0x200000
+    TRACE:fake_random:random called=6 times, value=424238335
+    TRACE:get32:GET32(0x20003004)=0x6b8eacaa
+    TRACE:fake_random:random called=7 times, value=719885386
 
 ----------------------------------------------------------------------
 ### Extension 1: use two sonar's to more accurately estimate position.
