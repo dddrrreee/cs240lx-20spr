@@ -93,7 +93,43 @@ Expected tests and their results:
 ### Part 2: Extending your fake-pi
 
 Your libpi should work fine "as is."  Before going further: verify that
-you get the same checksums as everyone else.
+you get the same checksums as everyone else.  Do the high-level version first:
+   1. Comment out `RAW_PI_SOURCE` in `libpi-fake/Makefile` variable (make clean
+      and make)
+   2. Compile the sonar --- you may need to implement some undefined references.
+   3. Synonyms: some people call `gpio_set_on(pin)` others call
+      `gpio_write(pin,1)` --- both will do the same thing.   Just make `gpio_set_on` to 
+       call `gpio_write` instead.
+
+My checksum for the high-level version is:
+
+    % ./sonar.fake | cksum
+    2561594719 9552
+
+First 20 lines is:
+
+    TRACE:fake_random:random called=1 times, value=1804289383
+    TRACE:uart_init:uart
+    PI:starting sonar!
+    TRACE:gpio_set_output:pin=20
+    TRACE:gpio_write:pin=20, val=0
+    TRACE:gpio_set_input:pin=21
+    TRACE:gpio_set_pulldown:pin=21
+    PI:sonar ready!
+    TRACE:gpio_write:pin=20, val=1
+    TRACE:delay_us:delay_us = 10usec
+    TRACE:gpio_write:pin=20, val=0
+    TRACE:delay_us:delay_us = 148usec
+    TRACE:timer_get_usec:getting usec = 1804289542usec
+    TRACE:fake_random:random called=2 times, value=846930886
+    TRACE:gpio_read:pin=21, returning=0
+    TRACE:timer_get_usec:getting usec = 1804289543usec
+    TRACE:fake_random:random called=3 times, value=1681692777
+    TRACE:gpio_read:pin=21, returning=1
+    TRACE:timer_get_usec:getting usec = 1804289544usec
+    TRACE:timer_get_usec:getting usec = 1804289545usec
+
+
 
 Of course, each time you run, you will get the same value --- as you
 recall, you made your fake time value increment by 1 each time the timer
