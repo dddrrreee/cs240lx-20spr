@@ -10,7 +10,7 @@ endif
 
 include $(CS140E_PATH)/libpi/includes.mk
 
-CFLAGS += -Wno-unused-function -Wno-unused-variable -falign-functions=4 -DFAKE_PI
+CFLAGS += -Wno-unused-function -Wno-unused-variable -falign-functions=4 
 
 OBJS := $(patsubst %.c, %.o, $(SOURCES))
 
@@ -57,6 +57,7 @@ tags:
 
 clean:
 	rm -rf $(BUILD_DIR) $(NAME) *~ tags *.o *.bin *.elf *.list *.img Makefile.bak  *.d $(NAME).fake
+	make -f Makefile.fake clean
 
 .PHONY: libs all tags clean run fake-libpi
 
