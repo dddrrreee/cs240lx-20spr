@@ -1,7 +1,5 @@
 NAME := sonar
 SRC := $(NAME).c hc-sr04.c
-# LEVEL := FAKE_LOW_LEVEL
-LEVEL := FAKE_HIGH_LEVEL
 
 MFLAGS =  --no-print-directory 
 # MAKEFLAGS += --warn-undefined-variables
@@ -12,29 +10,26 @@ ifndef CS240LX_2021_PATH
 $(error CS240LX_2021_PATH is not set: this should contain the absolute path to where this directory is.  Define it in your shell's initialiation.  For example, .tcshrc for tcsh or .bashrc for bash)
 endif
 
-
 # where libpi is.
 LPI = $(CS140E_PATH)/libpi
 
 # where the fake lib pi is
-FLPI = $(CS240LX_2021_PATH)/libpi-fake
+FLPI = $(CS240LX_2021_PATH)/libpi-fake.staff
 
 # where libunix is.
 LUNIX = $(CS240LX_2021_PATH)/libunix/
 
 CC=gcc
 CFLAGS = -Wall -g -Og -std=gnu99  -Werror -Wno-unused-function 
-CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)  -I$(CS240LX_2021_PATH)/libunix -D$(LEVEL)
+CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)  -I$(CS240LX_2021_PATH)/libunix 
 
 
 # test lib
-TLIB = $(FLPI)/libpi-fake.a
-
-# might need other libs too -lm -lutil, etc
-LIBS= $(TLIB)
+TLIB_HL = $(FLPI)/libpi-fake.hl.a
+TLIB_LL = $(FLPI)/libpi-fake.ll.a
 
 # make fake lib pi first, then progs
-all: libfake $(NAME).fake 
+all: libfake $(NAME).hl.fake  $(NAME).ll.fake run
 
 # don't worry about deps: always run make
 libfake:
@@ -48,11 +43,18 @@ libfake:
 # other dependencies
 
 # we don't want .o b/c will hit the pi stuff.
-%.fake: %.c $(SRC) $(TLIB)
-	$(CC) $(CFLAGS) $(SRC) -o $@ $(LIBS)
+$(NAME).hl.fake: $(SRC) $(TLIB_HL)
+	$(CC) $(CFLAGS) -DFAKE_HIGH_LEVEL $(SRC) -o $@ $(TLIB_HL)
+
+$(NAME).ll.fake: $(SRC) $(TLIB_LL)
+	$(CC) $(CFLAGS) -DFAKE_LOW_LEVEL $(SRC) -o $@ $(TLIB_LL)
 
 clean:
-	rm -f *.o *~  *.bak $(NAME)  blink $(NAME).fake 
+	rm -f *.o *~  *.bak $(NAME)  blink $(NAME).hl.fake   $(NAME).ll.fake
 	make -C $(FLPI) clean
+
+run:
+	./$(NAME).ll.fake | cksum
+	./$(NAME).hl.fake | cksum
 
 .PHONY: all clean libfake
