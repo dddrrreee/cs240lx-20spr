@@ -22,7 +22,8 @@ LUNIX = $(CS240LX_2021_PATH)/libunix/
 
 CC=gcc
 CFLAGS = -Wall -g -Og -std=gnu99  -Werror -Wno-unused-function 
-CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)
+CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)  -I$(CS240LX_2021_PATH)/libunix
+
 
 # test lib
 TLIB = $(FLPI)/libpi-fake.a
