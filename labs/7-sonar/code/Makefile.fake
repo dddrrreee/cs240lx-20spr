@@ -1,5 +1,7 @@
 NAME := sonar
-SRC := $(NAME).c hc-sr04.c memory-model.c
+SRC := $(NAME).c hc-sr04.c
+# LEVEL := FAKE_LOW_LEVEL
+LEVEL := FAKE_HIGH_LEVEL
 
 MFLAGS =  --no-print-directory 
 # MAKEFLAGS += --warn-undefined-variables
@@ -22,7 +24,7 @@ LUNIX = $(CS240LX_2021_PATH)/libunix/
 
 CC=gcc
 CFLAGS = -Wall -g -Og -std=gnu99  -Werror -Wno-unused-function 
-CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)  -I$(CS240LX_2021_PATH)/libunix
+CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(FLPI)  -I$(CS240LX_2021_PATH)/libunix -D$(LEVEL)
 
 
 # test lib
