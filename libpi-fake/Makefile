@@ -2,9 +2,7 @@ TARGET_HL = libpi-fake.hl.a
 TARGET_LL = libpi-fake.ll.a
 LPI = $(CS140E_PATH)/libpi/
 
-# we could use time directly: you will have to build a PUT32 that returns something sensible.
-# if you want to use raw rpi code, put it before our replace
-LOW_LEVEL_PI_SOURCE = $(LPI)/cs140e-src/timer.c $(LPI)/cs140e-private/gpio.c $(LPI)/cs140e-private/gpio-pud.c 
+include low-level.mk
 
 HL_SOURCES :=  $(wildcard ./*.c) 
 LL_SOURCES := $(LOW_LEVEL_PI_SOURCE) $(wildcard ./*.c) 
@@ -23,7 +21,7 @@ LPI = $(CS140E_PATH)/libpi
 # where libunix is (currently)
 LUNIX = $(CS240LX_2021_PATH)/libunix/
 
-VPATH := .:$(LPI):$(LPI)/cs140e-private:$(LPI)/libc:$(LPI)/cs140e-src:$(LPI)/cs140e-src
+VPATH := .:$(LPI):$(LPI)/cs140e-private:$(LPI)/libc:$(LPI)/cs140e-src:$(LPI)/cs140e-src:$(CS240LX_2021_PATH)/liblxpi/
 START= cs140e-start
 
 LL_OBJS := $(patsubst %.c, %.o, $(LL_SOURCES))
