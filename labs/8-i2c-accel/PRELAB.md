@@ -12,7 +12,7 @@ The main thing for the accelerometer:
 
  3. Make sure when you run `my-install test-programs/self-test.img` it
     runs and prints out something like the following --- the values should
-    change as you move the acceleometer around:
+    change as you move the accelerometer around:
 
 
         ******************sending 6124 bytes
@@ -58,3 +58,12 @@ the LSM6DS3 accelerometer we have:
      [docs/LSM6DS33-AN4682.pdf](./docs/LSM6DS33-AN4682.pdf).
   3. A pdf of the actual [ebay-listing.pdf](./docs/ebay-listing.pdf) that
      we got these from.
+
+
+The device uses the I2C protocol.  I did a quick skim and these seem
+reasonable if you need some background:
+
+  1. [Sparkfun tutorial](https://learn.sparkfun.com/tutorials/i2c/all).
+  2. [wikipedia: has code!](https://en.wikipedia.org/wiki/I%C2%B2C).
+  3. [also detailed](https://www.best-microcontroller-projects.com/i2c-tutorial.html).
+  4. [pic tutorial](https://www.robot-electronics.co.uk/i2c-tutorial)
