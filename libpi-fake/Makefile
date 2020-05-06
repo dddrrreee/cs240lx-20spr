@@ -20,8 +20,10 @@ endif
 LPI = $(CS140E_PATH)/libpi
 # where libunix is (currently)
 LUNIX = $(CS240LX_2021_PATH)/libunix/
+LIBPILX = $(CS240LX_2021_PATH)/liblxpi/
 
-VPATH := .:$(LPI):$(LPI)/cs140e-private:$(LPI)/libc:$(LPI)/cs140e-src:$(LPI)/cs140e-src:$(CS240LX_2021_PATH)/liblxpi/
+VPATH := .:$(LPI):$(LPI)/cs140e-private:$(LPI)/libc:$(LPI)/cs140e-src:$(LPI)/cs140e-src:$(LIPILX)
+
 START= cs140e-start
 
 LL_OBJS := $(patsubst %.c, %.o, $(LL_SOURCES))
@@ -34,7 +36,7 @@ HL_OBJS := $(foreach o, $(HL_OBJS), $(BUILD_DIR)/$(notdir $o))
 
 CC=gcc
 CFLAGS = -Wall -g -Og -std=gnu99  -Werror -Wno-unused-function 
-CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX
+CFLAGS += -I$(LPI) -I$(LUNIX) -DRPI_UNIX -I$(LIBPILX)
 
 # overdepend: all .o's depend on all .h's  --- make deps as simple as possible.
 DEPS := $(wildcard ./*.h) $(LPI)/rpi.h Makefile 
