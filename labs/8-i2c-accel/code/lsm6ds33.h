@@ -57,6 +57,13 @@ typedef enum  {
 	lsm6ds33_6660hz = 0b1010,	// high performance
 } lsm6ds33_hz_t;
 
+static inline int legal_gyro_hz(unsigned hz) {
+    if(hz == lsm6ds33_1660hz)
+        panic("gyro: 1660hz doesn't seem to work\n");
+    return hz <= lsm6ds33_1660hz;
+}
+
+
 typedef enum {
 	// wait: page 15 has 125,250,500,2000??
     // we encode the scale in the upper 16 bits, the device bit
@@ -66,7 +73,15 @@ typedef enum {
 	lsm6ds33_1000dps = (1000 << 16) | 0b10,
 	lsm6ds33_2000dps = (2000 << 16) | 0b11
 } lsm6ds33_dps_t;
-		
+
+static inline int legal_dps(lsm6ds33_dps_t dps) {
+    return dps == lsm6ds33_245dps
+        || dps == lsm6ds33_500dps
+        || dps == lsm6ds33_1000dps
+        || dps == lsm6ds33_2000dps;
+}
+
+
 
 /* register addresses: LSM6DS33-AN4682.pdf p8 */
 enum regAddr {
