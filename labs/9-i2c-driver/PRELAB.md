@@ -1,5 +1,7 @@
 This next lab we are going to write an i2c driver.
 
+Read this short not on [reading and writing device memory](./rw-device-memory.md).
+
 Before lab, make sure you:
   - Read about the I2C interface in the annotated Broadcom doc in our `docs/` directory.
     Note they confusingly call I2C "BSC".  You'll find the description on pages 28-37.
