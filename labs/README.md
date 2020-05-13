@@ -49,30 +49,30 @@ new tricks.
 ---------------------------------------------------------------------
 ### Part 3: Devices
 
-   - [6-fake](6-fake/README.md): you'll write low level GPIO code to
-     make device output cleaner, and then build a fake libpi that lets you
-     run your pi code, unaltered, on UNIX and cross-check its side-effects
-     against everyone else.
+  - [6-fake](6-fake/README.md): you'll write low level GPIO code to
+    make device output cleaner, and then build a fake libpi that lets you
+    run your pi code, unaltered, on UNIX and cross-check its side-effects
+    against everyone else.
 
-   - [7-sonar](7-sonar/README.md): you'll write a simple driver for
-     an HC-SR04 sonar, and then extend your fake-libpi to cross check
-     your implementation against everyone else.  Like the ws2812b 
-     lab, this shows how the use of time can extend the information
-     output from a digital device.
+  - [7-sonar](7-sonar/README.md): you'll write a simple driver for
+    an HC-SR04 sonar, and then extend your fake-libpi to cross check
+    your implementation against everyone else.  Like the ws2812b 
+    lab, this shows how the use of time can extend the information
+    output from a digital device.
 
-   - [8-i2c-accel](8-i2c-accel/README.md): you'll use the wide-spread
-     I2C protocol to control a an accelerometer, a gyroscope and an
-     accelerometer.    The datasheet for these is a good, representative
-     example of the genre.
+  - [8-i2c-accel](8-i2c-accel/README.md): you'll use the wide-spread
+    I2C protocol to control a an accelerometer, a gyroscope and an
+    accelerometer.    The datasheet for these is a good, representative
+    example of the genre.
 
-   - [9-i2c-driver](9-i2c-driver/README.md): You'll use the broadcom
-     document to write your own I2C implementation and delete ours.
+  - [9-i2c-driver](9-i2c-driver/README.md): You'll use the broadcom
+    document to write your own I2C implementation and delete ours.
 
-     To help testing, you'll also write a driver for the popular ADS1115
-     analog-to-digital converter.  Analog devices (that output a varying
-     voltage) are typically the cheapest ones.  Unfornately your r/pi
-     cannot take their input directly.  We will use your I2C driver to
-     read inputs from a microphone and control the light array with it.
+    To help testing, you'll also write a driver for the popular ADS1115
+    analog-to-digital converter.  Analog devices (that output a varying
+    voltage) are typically the cheapest ones.  Unfornately your r/pi
+    cannot take their input directly.  We will use your I2C driver to
+    read inputs from a microphone and control the light array with it.
 
 ---------------------------------------------------------------------
 ### Part 3: Exceptions, threads, and binary tricks
