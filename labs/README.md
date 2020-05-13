@@ -54,56 +54,25 @@ new tricks.
      run your pi code, unaltered, on UNIX and cross-check its side-effects
      against everyone else.
 
+   - [7-sonar](7-sonar/README.md): you'll write a simple driver for
+     an HC-SR04 sonar, and then extend your fake-libpi to cross check
+     your implementation against everyone else.  Like the ws2812b 
+     lab, this shows how the use of time can extend the information
+     output from a digital device.
 
----------------------------------------------------------------------
----------------------------------------------------------------------
-Be warned: the labs below have not been updated.
+   - [8-i2c-accel](8-i2c-accel/README.md): you'll use the wide-spread
+     I2C protocol to control a an accelerometer, a gyroscope and an
+     accelerometer.    The datasheet for these is a good, representative
+     example of the genre.
 
+   - [9-i2c-driver](9-i2c-driver/README.md): You'll use the broadcom
+     document to write your own I2C implementation and delete ours.
 
-Additional benefits:
-  1. 90% of OS code is device drivers, so it makes sense to learn how
-     to write this kind of code.
-  2. You will write your own emulator layer so that you can cross check your
-     code against everyone else.
-
-#### Digital
-
-We start with the simplest type of devices --- digital (which only turn
-on, off) to get situated.
-
-   1. Hall effect.
-   2. Color.
-
-#### Time
-
-You can encode more data when you add time to 0 and 1.
-We will write the code to control:
-
-  1. A sonar device to measure distance
-  2. ws211b light arrays (which require  nanosecond timings).
-
-#### Protocols: i2c and spi
-
-We then switch to using higher level protocols, starting
-with the I2C method.  
-
-   1. SPI: very common, simple protocol.  You'll implement it and use
-      it to control a digital-to-analogue converter and to control an
-      OLED screen.
-
-   2. I2C: more complicated but less wires than SPI; also
-      widely-available.
-      We'll give you a binary version, which you will use to control
-      an accelerometer, a gyroscope and an accelerometer.  Once your
-      accelerometer code works, you'll replace our I2C implementation
-      with yours.
-
-##### Analog
-
-Analog devices (that output a varying voltage) are typically
-the cheapest ones.  Unfornately your r/pi cannot take their input
-directly.  We will use your I2C driver to read inputs from a microphone
-and control the light array with it.
+     To help testing, you'll also write a driver for the popular ADS1115
+     analog-to-digital converter.  Analog devices (that output a varying
+     voltage) are typically the cheapest ones.  Unfornately your r/pi
+     cannot take their input directly.  We will use your I2C driver to
+     read inputs from a microphone and control the light array with it.
 
 ---------------------------------------------------------------------
 ### Part 3: Exceptions, threads, and binary tricks
@@ -111,14 +80,6 @@ and control the light array with it.
 CS240 starts off discussing race-condition detection (Eraser), threading
 issues (Bohm) and cooperative vs pre-emptive threads.  These initial
 labs give you a much more concrete grasp of these topics.
-
-  - [Interrupts]: we give you several pages of code showing a complete,
-    working interrupt system for the pi.  We will go over each line, and
-    you will modify the code in various ways to ensure you understand
-    it (changing where the exception vectors are, returning from the
-    interrupt handler in a cleaner way, changing the code to be faster,
-    catching another type of exception, making the timer interrupt much
-    more frequent).
 
   - [Statical valgrind]: Use interrupts to do a statistical memory
     corruption checker.  You will write a simple `kmalloc` implementation
@@ -131,6 +92,22 @@ labs give you a much more concrete grasp of these topics.
     writing beyond the end of the stack.  It may miss errors, but will
     be very fast and should do a reasonable job, given a long enough
     run and a fine-enough window.   We will make it more effective later.
+
+---------------------------------------------------------------------
+Be warned: the labs below have not been updated.
+
+
+### More Tools
+
+
+  - [Interrupts]: we give you several pages of code showing a complete,
+    working interrupt system for the pi.  We will go over each line, and
+    you will modify the code in various ways to ensure you understand
+    it (changing where the exception vectors are, returning from the
+    interrupt handler in a cleaner way, changing the code to be faster,
+    catching another type of exception, making the timer interrupt much
+    more frequent).
+
 
   - [Potential]: Lots of people complain about how easy it is to make
     mistakes with cooperative threads.   You will write interrupt-based
@@ -268,3 +245,27 @@ use memory protecton to build tools.
     much-faster code you wrote.    Example benchmarks: how fast you
     can ping-pong bytes between threads, take a protection fault, etc.
     If you beat linux/macos by 50x I wouldn't be surprised.
+
+
+
+---------------------------------------------------------------
+Additional benefits:
+  1. 90% of OS code is device drivers, so it makes sense to learn how
+     to write this kind of code.
+  2. You will write your own emulator layer so that you can cross check your
+     code against everyone else.
+
+#### Digital
+
+We start with the simplest type of devices --- digital (which only turn
+on, off) to get situated.
+
+   1. Hall effect.
+   2. Color.
+
+We then switch to using higher level protocols, starting
+with the I2C method.  
+
+   1. SPI: very common, simple protocol.  You'll implement it and use
+      it to control a digital-to-analogue converter and to control an
+      OLED screen.
