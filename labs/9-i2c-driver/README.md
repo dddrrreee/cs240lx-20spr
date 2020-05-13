@@ -1,6 +1,6 @@
 ## Writing the i2c driver.
 
-Make sure you do the prelab!
+*** Make sure you do the [PRELAB](PRELAB.md)! ***
 
 Today you're going to write your own I2C driver.  You definitely need to have done
 the readings: 
