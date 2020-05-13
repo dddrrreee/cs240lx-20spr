@@ -81,17 +81,18 @@ CS240 starts off discussing race-condition detection (Eraser), threading
 issues (Bohm) and cooperative vs pre-emptive threads.  These initial
 labs give you a much more concrete grasp of these topics.
 
-  - [Statical valgrind]: Use interrupts to do a statistical memory
-    corruption checker.  You will write a simple `kmalloc` implementation
-    to use guard zones so that you can (often) tell when a pointer
-    wanders from one allocated object to another.  You will also set
-    allocated memory to a known pattern so you can detect if a read happens
-    before an initializing write.  Set your timing interrupts to be very
-    frequent and in the handler, decode each interrupted instruction,
-    and see if it is out of bounds, reading uninitialized memory, or is
-    writing beyond the end of the stack.  It may miss errors, but will
-    be very fast and should do a reasonable job, given a long enough
-    run and a fine-enough window.   We will make it more effective later.
+  - [10-memcheck-stat](10-memcheck-stat/README.md)
+    Use interrupts to do a statistical memory corruption checker.
+    You will write a simple `kmalloc` implementation to use guard zones so
+    that you can (often) tell when a pointer wanders from one allocated
+    object to another.  You will also set allocated memory to a known
+    pattern so you can detect if a read happens before an initializing
+    write.  Set your timing interrupts to be very frequent and in the
+    handler, decode each interrupted instruction, and see if it is out of
+    bounds, reading uninitialized memory, or is writing beyond the end of
+    the stack.  It may miss errors, but will be very fast and should do
+    a reasonable job, given a long enough run and a fine-enough window.
+    We will make it more effective later.
 
 ---------------------------------------------------------------------
 Be warned: the labs below have not been updated.
