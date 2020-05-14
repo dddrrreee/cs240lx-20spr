@@ -1,5 +1,9 @@
 ## CS240lx: advanced operating system lab, accelerated
 ### Engler, Spr 2020.
+
+tl;dr index:
+
+  - [This is a lab class and here are the labs](./labs/README.md).
   - [Course website](https://github.com/dddrrreee/cs240lx-20spr)
   - [Course newsgroup](https://groups.google.com/forum/#!forum/cs240lx-spr20).
   - To get the repository: 
