@@ -37,61 +37,11 @@ protos:
 .c.o: $(DEPS)
 	$(CC) $(CFLAGS) -c $< 
 
-$(TARGET): $(LIB_OBJS) 
+$(TARGET): $(LIB_OBJS)  $(DEPS)
 	$(AR) crf $(TARGET) $^ 
 
 clean :
 	rm -f $(LIB_OBJS) *~ $(TARGET)
 
-depend: 
-	makedepend -I -Iinclude $(SRC)
-# DO NOT DELETE
+.PHONY: clean protos 
 
-s_cos.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-s_cos.o: /usr/include/features.h /usr/include/stdc-predef.h
-s_cos.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-s_cos.o: math_private_openbsd.h
-k_cos.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-k_cos.o: /usr/include/features.h /usr/include/stdc-predef.h
-k_cos.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-k_cos.o: math_private_openbsd.h
-k_sin.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-k_sin.o: /usr/include/features.h /usr/include/stdc-predef.h
-k_sin.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-k_sin.o: math_private_openbsd.h
-e_rem_pio2.o: cdefs-compat.h math_private.h types-compat.h
-e_rem_pio2.o: /usr/include/stdint.h /usr/include/features.h
-e_rem_pio2.o: /usr/include/stdc-predef.h /usr/include/limits.h fpmath.h
-e_rem_pio2.o: i386_fpmath.h /usr/include/endian.h math_private_openbsd.h
-k_rem_pio2.o: cdefs-compat.h math_private.h types-compat.h
-k_rem_pio2.o: /usr/include/stdint.h /usr/include/features.h
-k_rem_pio2.o: /usr/include/stdc-predef.h /usr/include/limits.h fpmath.h
-k_rem_pio2.o: i386_fpmath.h /usr/include/endian.h math_private_openbsd.h
-s_scalbn.o: cdefs-compat.h math_private.h types-compat.h
-s_scalbn.o: /usr/include/stdint.h /usr/include/features.h
-s_scalbn.o: /usr/include/stdc-predef.h /usr/include/limits.h fpmath.h
-s_scalbn.o: i386_fpmath.h /usr/include/endian.h math_private_openbsd.h
-s_floor.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-s_floor.o: /usr/include/features.h /usr/include/stdc-predef.h
-s_floor.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-s_floor.o: math_private_openbsd.h
-s_copysign.o: cdefs-compat.h math_private.h types-compat.h
-s_copysign.o: /usr/include/stdint.h /usr/include/features.h
-s_copysign.o: /usr/include/stdc-predef.h /usr/include/limits.h fpmath.h
-s_copysign.o: i386_fpmath.h /usr/include/endian.h math_private_openbsd.h
-s_fabs.o: math_private.h cdefs-compat.h types-compat.h /usr/include/stdint.h
-s_fabs.o: /usr/include/features.h /usr/include/stdc-predef.h
-s_fabs.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-s_fabs.o: math_private_openbsd.h
-s_sin.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-s_sin.o: /usr/include/features.h /usr/include/stdc-predef.h
-s_sin.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-s_sin.o: math_private_openbsd.h
-s_atan.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-s_atan.o: /usr/include/features.h /usr/include/stdc-predef.h
-s_atan.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-s_atan.o: math_private_openbsd.h
-e_atan2.o: cdefs-compat.h math_private.h types-compat.h /usr/include/stdint.h
-e_atan2.o: /usr/include/features.h /usr/include/stdc-predef.h
-e_atan2.o: /usr/include/limits.h fpmath.h i386_fpmath.h /usr/include/endian.h
-e_atan2.o: math_private_openbsd.h
