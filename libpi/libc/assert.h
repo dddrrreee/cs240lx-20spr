@@ -18,7 +18,7 @@
 	clean_reboot();							\
 } while(0)
 
-#define pi_trace(args...) do { printk("TRACE:"); printk(args); } while(0)
+#define trace(args...) do { printk("TRACE:"); printk(args); } while(0)
 
 #define assert(bool) do { if((bool) == 0) panic(#bool); } while(0)
 

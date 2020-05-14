@@ -21,7 +21,6 @@ void _cstart() {
         *bss++ = 0;
 
 #   ifdef RPI_FP_ENABLED
-
 #   include "rpi-fp.h"
     enable_fpu();
     assert(fp_is_enabled);
