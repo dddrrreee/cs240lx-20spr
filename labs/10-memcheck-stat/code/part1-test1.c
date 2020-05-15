@@ -22,9 +22,6 @@ void notmain(void) {
     trace("alloc returned %p\n", p);
     memset(p, 0, 4);
     ckfree(p);
-
-    printk("%p=0xff\n", 0xff);
-
     if(ck_heap_errors())
         panic("invalid error!!\n");
     else
