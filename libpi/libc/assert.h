@@ -19,6 +19,11 @@
 } while(0)
 
 #define trace(args...) do { printk("TRACE:"); printk(args); } while(0)
+#define trace_panic(args...) do { \
+    printk("TRACE:ERROR"); \
+    printk(args); \
+    panic(args);\
+} while(0)
 
 #define assert(bool) do { if((bool) == 0) panic(#bool); } while(0)
 
