@@ -2,12 +2,12 @@
 
 ***Make sure you do the [PRELAB](PRELAB.md)!***
 
-Today we will build a simple memory checking tool that can check
-if an executing program performs a read or write to invalid memory.
-Typically such tools (Valgrind, Purify) are incredibly complex and large
-(100K lines of code or more).  Most of their complexity comes from the
-fact you cannot reliably statically figure out what is code and what
-is data in a program.  As a result, they have to do dynamic binary
+Over the next few labs we will build a simple memory checking tool that
+can check if an executing program performs a read or write to invalid
+memory.  Typically such tools (Valgrind, Purify) are incredibly complex
+and large (100K lines of code or more).  Most of their complexity comes
+from the fact you cannot reliably statically figure out what is code and
+what is data in a program.  As a result, they have to do dynamic binary
 instrumentation, which requires the ability to parse and (much harder)
 correctly specify the semantics of all binary instructions.
 
@@ -20,30 +20,36 @@ Our tool works as follows:
      By definition: any address we interrupt contains an instruction
      (since it was being executed).
 
-  2. We replace each load an store instuction we discover with a jump
-     to a custom checking routine for that specific code address.
+  2. We decode the interrupted instruction to see if it is a load or 
+     a store.  For each load or store we discover we  replace it with
+     a branch instruction that jumps to 
+     custom checking routine for that specific instruction address.
      Because the jump is the same size as the load or store, the program
      binary does not change size ("dialate") and so we do not have to
      patch program addresses (infeasible if you can't reliably classify
      code and data).  Because the trampoline is customized to that
-     specific operation, it is reasonably fast, and can easily return
-     control back to the original location if the operation checks out.
+     specific instruction, we can hardcode any knowledge it needs,
+     including the return address it needs to jump back to.
 
-  3. We check the state of each memory location using the common method of
-     "shadow memory" --- all bytes the program can access have a corresponding
-     shadow location that tracks their state (allocated, freed, invalid).
-     Shadow memory is allocated at a specific, known offset from the proram's
-     memory so that it is fast and simple to look up the state of a
-     memory location given just the address.  (A few bounds checks and then 
-     an addition.)
+  3. In each trampoline call, we check the state of each memory location
+     using the common method of "shadow memory" --- all bytes the program
+     can access have a corresponding shadow location that tracks their
+     state (allocated, freed, invalid).  Shadow memory is allocated at
+     a specific, known offset from the proram's memory so that it is
+     fast and simple to look up the state of a memory location given
+     just the address.  (A few bounds checks and then an addition.)
 
-There is a lot going on in this lab, so we do a very stripped down,
+   4. The end result: you should be able to take unaltered binaries,
+      and without MMU support, detect a variety of memory errors 
+      automatically.
+
+There is a lot going on in these set of labs, so we do a very stripped down,
 minimum viable product.  It's not general, it's not rebust, but it will
 have `hello world` level examples of the key pieces so that you have
-something to think about over the weekend, which will help when we build
+something to think about, which will help when we build
 these out later.
 
-The lab has four pieces:
+The tool has four pieces:
    1. Make a simple redzone memory allocator. This will
       catch some number of memory corruptions, and will help prevent us
       from missing if a pointer jumps from one object to another.
@@ -60,6 +66,10 @@ The lab has four pieces:
       This means that when we interrupt a load or store once, the check
       will be performed for all future executions.  I.e., it is sticky,
       or persistent.
+
+Today we focus on the first part, making a redzone allocator.  As a
+warmup for shadow memory you will also build a simple garbage collector
+using a cute hack from Hans Boehm.
 
 Checkoff:
   1. Showing you find the errors in the checked in programs.
@@ -81,6 +91,53 @@ and without).   The linker should give you an error if you link against
 the wrong one.
 
 ### Part 1: redzone allocation.
-### Part 2: shadow memory
-### Part 3: statistical sampling
-### Part 4: injecting trampolines.
+
+If you look in the `code` directory, there is a simple bit of starter
+code.  The instructions are in `ckalloc.c` and `ckalloc.h`.  You will
+write your allocator and, because we all use the same initial heap and
+same conceptual approach you should get the same tracing output that we
+can cross-check.
+
+Start with my test programs (there is only one there now, I need to check
+in others) and then please write at least one of your own to test that
+the allocator finds memory is should.
+
+### Part 2: garbage collection.
+
+In this part we write a simple leak checker, and then extend it to 
+be a conservative garbage collector --- a tool that finds memory
+that no live pointers reference and then frees it.
+
+Basic definition of "garbage":
+   - A block of memory with no pointer to it.  Since there is no pointer,
+     then there is not way to observe it, so the program cannot tell that
+     we free it.  (With some assumptions.)
+
+A mark and sweep garbage collector:
+   1. Given: a set of "root" pointers (globals, registers) and  the eqvuivalant
+      of a  list of all allocated objects.
+   2. Mark any object these point to as allocated and add the object to 
+      a worklist, if it has not been scanned already.
+   3. Traverse the worklist, transitively scanning for pointers, marking
+      pointed to objects and adding these reached objects to the worklist
+      as before.
+   4. After you exhaust the worklist, the set of objects that are not marked
+      are garbage and you can reclaim them.
+
+We'd like to do this for C:
+  -  Problem: we don't have type information.
+  - Solution: hack from Boehm: treat any 32-bit value that could be a legal
+    pointer as a legal pointer and mark the object it points to as allocated.
+    This is conservative in that it may not free memory that is not actually
+    referenced, but it will never reclaim objects it should not.
+
+How:
+  1. Iterate over each 32-bit word in the allocated heap, 
+     the data segment, registers, and the stack.  This is a complete
+     set of all locations a pointer could be in.
+  2. For each integer that falls within the heap, mark the associated block
+     as claimed.
+  3. At the end, either give a warning that it wasn't freed (when we are working
+     as a Purify leak detector) or reclaim it (when we run in garbage collection
+     mode).
+
