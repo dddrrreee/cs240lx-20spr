@@ -43,9 +43,9 @@ typedef struct {
 
 // pull the remainder into the second redzone.
 typedef struct header {
-    uint32_t nbytes_alloc;  // how much the user allocated.
-    uint32_t nbytes_rem;    //the unused remainder.
-    state_t state;              // state of the block.
+    uint32_t nbytes_alloc;  // how much the user requested to allocate.
+    uint32_t nbytes_rem;    // the unused remainder (since we roundup).
+    uint32_t state;          // state of the block: { ALLOCED, FREED }
 
     // checksum of this header struct: use fast_hash from our libpi/libc
     //  uint32_t fast_hash(&header, sizeof(header));
@@ -53,9 +53,48 @@ typedef struct header {
 
     src_loc_t alloc_loc,    // location they called ckalloc() at.
               free_loc;     // location they called ckfree() at.
+                            // used for error reporting.
 
+    // used for gc
+    uint32_t refs_start;    // number of pointers to the start of the block.
+    uint32_t refs_middle;   // number of pointers to the middle of the block.
+
+    // if you do a coalescing free you need something like this.
+    struct header  *prev;   // pointer to previous block, if any.  needed if
+                            //     we do a coalescing free.
+    uint32_t padding;       // 8 byte align.
 } hdr_t;
 
+
+// shouldn't be in the header: emit error, don't panic
+#define ck_error(_h, args...) do {      \
+        trace("ERROR:");\
+        printk(args);                    \
+        hdr_print(_h);                  \
+} while(0)
+
+// emit error, then panic.
+#define ck_panic(_h, args...) do {      \
+        trace("ERROR:");\
+        printk(args);                    \
+        hdr_print(_h);                  \
+        panic(args);                    \
+} while(0)
+
+// shouldn't be in the header.
+static void inline hdr_print(hdr_t *h) {
+    trace("\tnbytes=%d\n", h->nbytes_alloc);
+    src_loc_t *l = &h->alloc_loc;
+    if(l->file)
+        trace("\tBlock allocated at: %s:%s:%d\n", l->file, l->func, l->lineno);
+
+    l = &h->free_loc;
+    if(h->state == FREED && l->file)
+        trace("\tBlock freed at: %s:%s:%d\n", l->file, l->func, l->lineno);
+}
+
+
+// shouldn't be in the header.
 enum {
     SENTINAL = 0xfe,      // the sentinal we mark with --- should be less naive.
 
