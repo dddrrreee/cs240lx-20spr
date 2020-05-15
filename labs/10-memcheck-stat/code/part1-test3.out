@@ -4,8 +4,8 @@ TRACE:freeing 0x1000b8
 TRACE:going to check heap: 320 bytes allocated, 1048256 bytes left
 TRACE:ERROR:block 0x1000b8 corrupted at offset 0
 TRACE:	nbytes=4
-TRACE:	Block allocated at: part1-test3.c:notmain:11
-TRACE:	Block freed at: part1-test3.c:notmain:13
+TRACE:	Block allocated at: part1-test3.c:notmain:13
+TRACE:	Block freed at: part1-test3.c:notmain:15
 TRACE:	Wrote block after free!
 TRACE:SUCCESS: checked 1 blocks, detected no errors
-PANIC:part1-test3.c:notmain:17:invalid error!!
+PANIC:part1-test3.c:notmain:19:invalid error!!
