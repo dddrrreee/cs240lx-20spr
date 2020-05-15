@@ -7,5 +7,5 @@ TRACE:	nbytes=4
 TRACE:	Block allocated at: part1-test3.c:notmain:13
 TRACE:	Block freed at: part1-test3.c:notmain:15
 TRACE:	Wrote block after free!
-TRACE:SUCCESS: checked 1 blocks, detected no errors
-PANIC:part1-test3.c:notmain:19:invalid error!!
+TRACE:checked 1 blocks, detected 1 errors
+TRACE:SUCCESS: detected corruption

@@ -15,8 +15,9 @@ void notmain(void) {
     ckfree(p);  // should catch this.
 
     p[0] = 1;   // past end of block
-    if(ck_heap_errors() != 1)
-        panic("invalid error!!\n");
+    unsigned nerr;
+    if((nerr = ck_heap_errors()) != 1)
+        panic("invalid error: have %d errors expected 1!!\n", nerr);
     else
         trace("SUCCESS: detected corruption\n");
 }
