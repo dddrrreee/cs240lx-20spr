@@ -94,9 +94,11 @@ static char* emit(unsigned base, char *dst, int n, int val, int width, int signe
 		}
 		case 16:
 			u = val;
-                        do {
-                                *p++ = "0123456789abcdef"[u % 16];
-                        } while(u /= 16);
+            do {
+                *p++ = "0123456789abcdef"[u % 16];
+            } while(u /= 16);
+            *p++ = 'x';
+            *p++ = '0';
                         break;
 		// just a single char
 		case 8:
