@@ -6,6 +6,5 @@
 // typedef int int32_t;
 double my_cos(double);
 
-#include "include/openlibm.h"
-
+#include "openlibm.h"
 #include "math-protos.h"
