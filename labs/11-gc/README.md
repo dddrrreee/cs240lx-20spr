@@ -316,8 +316,8 @@ ways to do some action --- if one person picks X and another Y, we will
 get spurious differences.   (In addition, it's tricky when the lab isn't
 very clear about what you are supposed to do!)    However, with that
 said, the problem of spurious differences can largely disappear when
-you instead cross-check your own code against previous implementations
-versus against other people's implementations.
+you instead cross-check your *own* code against previous implementations
+rather than against other people's implementations.
 
 My assertion is that you should pretty much always use the approach of
 last lab (or a more aggressive one!) when you are modifying your own code.
