@@ -309,10 +309,10 @@ free without much of the complexity.
 ---------------------------------------------------------------------------
 ### Post-script: A key point about cross-checking
 
-Last lab we used cross-checking to try to make sure everyone has the same
+Last lab we used cross-checking to try to make sure everyone had the same
 allocation algorithm.  Obviously, cross-checking across code written
 by different people can be tricky since there are often multiple legal
-ways to do some action --- if one person picks X and another Y, we can
+ways to do some action --- if one person picks X and another Y, we will
 get spurious differences.   (In addition, it's tricky when the lab isn't
 very clear about what you are supposed to do!)    However, with that
 said, the problem of spurious differences can largely disappear when
