@@ -229,4 +229,25 @@ int pi_sd_init(void);
 // read and allocate a buffer entry <nsec*secsize> big
 void *pi_sec_read(uint32_t lba, uint32_t nsec);
 
+
+
+/*********************************************************
+ * some gcc helpers.
+ */
+
+// gcc memory barrier.
+#define gcc_mb() asm volatile ("" : : : "memory")
+
+// from linux --- can help gcc make better code layout
+// decisions.  can sometimes help when we want nanosec
+// accurate code.
+//
+// however: leave these til the last thing you do.
+//
+// example use:
+//   if(unlikely(!(p = kmalloc(4))))
+//      panic("kmalloc failed\n");
+#define likely(x)       __builtin_expect((x),1)
+#define unlikely(x)     __builtin_expect((x),0)
+
 #endif
