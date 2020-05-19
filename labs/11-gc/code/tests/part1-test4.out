@@ -1,0 +1,30 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part1-test4.bin> about to boot
+******************sending 10568 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+test4: use after free
+sizeof hdr=56, redzone=128
+TRACE:allocating 4 bytes
+TRACE:ckalloc:allocated 4 bytes, (total=320), ptr=0x1000b8
+TRACE:freeing 0x1000b8
+TRACE:going to check heap: 320 bytes allocated, 1048256 bytes left
+TRACE:SUCCESS: checked 1 blocks, detected no errors
+TRACE:SUCCESS heap checked out
+TRACE:going to check heap: 320 bytes allocated, 1048256 bytes left
+TRACE:ERROR:block 0x1000b8 corrupted at offset 4
+TRACE:	nbytes=4
+TRACE:	Block allocated at: tests/part1-test4.c:notmain:13
+TRACE:	Block freed at: tests/part1-test4.c:notmain:15
+TRACE:checked 1 blocks, detected 1 errors
+TRACE:SUCCESS: detected corruption
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up
