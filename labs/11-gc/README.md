@@ -319,12 +319,14 @@ said, the problem of spurious differences can largely disappear when
 you instead cross-check your *own* code against previous implementations
 rather than against other people's implementations.
 
-My assertion is that you should pretty much always use the approach of
-last lab (or a more aggressive one!) when you are modifying your own code.
-Cross-checking today's code against yesterday's code is a great way to
-quickly detect mistakes.  If you look in the `Makefile` you can even do
-that with the current setup.  Specifically, when you are happy with your code,
-run:
+My assertion is that you should pretty much always use the approach
+of last lab (or a more aggressive one!) when you are modifying your
+own code.  Specifying "correct output" is is hard.  However, checking
+the output of one run is identical to reference output is not (`diff`,
+`cksum`, `strcmp` are smart enough to do so).  Cross-checking today's code
+against yesterday's code is a great way to quickly detect mistakes in a
+lightweight way.  If you look in the `Makefile` you can even do that with
+the current setup.  Specifically, when you are happy with your code, run:
 
     make emitall
 
@@ -332,7 +334,7 @@ Which will emit all output files for the given tests (you can have
 it automatically grab all tests by modifying the `Makefile` target for
 `TESTS`).
 
-After that, doing 
+After that, doing:
 
     make checkall
 
