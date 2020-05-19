@@ -43,7 +43,7 @@ Hopefully did not break your code.
      These should run your header check before returning a header.
 
 ---------------------------------------------------------------------------
-### Part 1: leak detection.
+### Part 1: leak detection (90 minutes?)
 
 We will build a simple leak detector based on the approaches described in
 the Purify paper and Boehm's GC paper.  The tool will attempt to detect
@@ -147,7 +147,6 @@ can't do a compacting collector.
 #### Implementation notes
 
 
-
 For the pi, we implement the pseudo-code above as follows:
 
 
@@ -223,7 +222,7 @@ Some code mistakes:
      Kinda gross, sorry.
 
 ---------------------------------------------------------------------------
-### Part 2: Garbage collection.
+### Part 2: Garbage collection (30 minutes)
 
 We can fairly easily flip our leak detector into a leap corrector
 ("garbage collector") that will free unreachable blocks.
@@ -231,7 +230,6 @@ We can fairly easily flip our leak detector into a leap corrector
 To keep this part simple, we only flip the state of the block from
 `ALLOCATED` to `FREED` and keep a count of the number of allocated bytes
 that we free.
-
 In practice, you'd do something more active.  Two common approaches:
   1. For low-level allocators: Coalesce adjacent freed blocks to reduce 
      fragmentation and so that your allocator can satisfy a larger range
@@ -243,7 +241,9 @@ In practice, you'd do something more active.  Two common approaches:
      blocks below a certain size to a size-segregated free list.  This makes
      both free and allocate fast.
 
-If there is time I would suggest doing one of these. 
+If there is time I would suggest doing one of these.  It won't take much
+code, but can be a bit tricky because you have to make sure you update
+all necessary internal allocation pointers.
 
 For this part: 
   1. Finish implementing `sweep_free` which will look alot like `sweep_leak` without
