@@ -133,7 +133,7 @@ For example, assume:
 Therefore, we will consider `w` potentially a valid pointer and mark `b`.
 
 Of course, if `w` was just a random integer, this means we falsely
-marked `b`.  However, for our purposes this is "conservative" mistake
+marked `b`.  However, for our purposes this is a "conservative" mistake
 in that while it will cause us to not reclaim unused memory (which
 is inaccurate) it does not cause us to violate harm program correctness.
 
@@ -178,11 +178,12 @@ For the pi, we implement the pseudo-code above as follows:
      and recursively calls `mark` on the block's allocated memory (so:
      not the header, not the leftover part, not the redzones).
 
-  4. `sweep_leak`: iterates over each header and warns if there are blocks
-     that do not have references.  (In practice: each time you find
+  4. `sweep_leak`: iterates over each header and warns if a block in state
+     `ALLOCATED` has not been marked.  (In practice: each time you find
      a leaked block, it's probably useful to set a bit in its header
-     indicating you've already reported it, so any subsequent leak runs
-     do not obscure additional errors by repeatedly reporting old ones.)
+     indicating you've already reported this erro, so any subsequent
+     leak runs do not obscure additional errors by repeatedly reporting
+     old ones.)
 
   5. The tests are in `part2-test\*.c` --- you should just work through
      them one at a time like last time.  The tests are pretty simplistic,
