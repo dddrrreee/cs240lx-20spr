@@ -302,10 +302,9 @@ correct!) and use `reboot` as a massive `free()`. I cannot emphasize
 this enough!  Premature optimization is a virus on correctness, and
 space optimization is even worse than speed.
 
-but, if you need `free()`, you need it.  And the use of arenas and object
+But: if you need `free()`, you need it.  And the use of arenas and object
 allocators are a reasonable way to get much of the benefits of a general
 free without much of the complexity.
-
 
 ---------------------------------------------------------------------------
 ### Post-script: A key point about cross-checking
