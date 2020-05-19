@@ -26,7 +26,7 @@ I tried to clean up the code by restructuring a bit.
 Hopefully did not break your code.
 
   1. You should make a copy of your `ckalloc.c` from last lab and put 
-    in `11-gc/code`.
+     in `11-gc/code`.
   2. I cleaned up `ckalloc.h` and put all the internal stuff in 
     `ckalloc-internal.h`.  
   3. All the code for today's lab will go in `11-gc/code/ck-gc.c`
@@ -40,7 +40,7 @@ Hopefully did not break your code.
         // returns pointer to next hdr or 0 if none.
         hdr_t *ck_next_hdr(hdr_t *p);
 
-    These should run your header check before returning a header.
+     These should run your header check before returning a header.
 
 ---------------------------------------------------------------------------
 ### Part 1: leak detection.
