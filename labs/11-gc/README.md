@@ -48,7 +48,7 @@ Hopefully did not break your code.
 We will build a simple leak detector based on the approaches described in
 the Purify paper and Boehm's GC paper.  The tool will attempt to detect
 blocks of memory that *must* be lost because there are no pointers to
-it anywhere in the program.
+them anywhere in the program.
 
 The leak detector works by using simple mark-and-sweep algorithm to
 detect all blocks no longer reachable in the program and then, instead
@@ -72,8 +72,8 @@ The classic mark-and-sweep algorithm:
      by the program and so must be garbage (in our case: lost).
 
 
-At risk of overkill, but to try to make turn clarity up further than
-in most of our labs, here's simple pseudo-code:
+At risk of overkill, but in an attempt to reduce confusion, here's
+simple pseudo-code:
 
     mark_and_sweep()
        # all other memory locations must be reachable 
@@ -120,9 +120,10 @@ Fortunately, we can use a hack from Boehm:
 
   - Treat all any pointer-sized and pointer-aligned word (4-byte aligned
     and 4-byte sized on the pi) as a potential pointer and its contained
-    value as an address.  If this potential-address falls within any
-    block of allocated, we consider the block potentially reachable,
-    and mark the block.  
+    value as an address.  If this potential-address falls within the 
+    address range of any 
+    allocated block, we consider the block potentially reachable,
+    and mark it.
 
 For example, if an aligned 4-byte word `w` contains the value
 `0x10000f8` and our allocator has allocated a block `b` that starts
