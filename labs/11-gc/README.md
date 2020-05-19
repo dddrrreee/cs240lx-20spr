@@ -1,9 +1,8 @@
 ## Lab: Leak detection, garbage collection
 
-*** Make sure you look over [PRELAB](PRELAB.md)! ***
 
 In this lab we write a simple leak checker (Part 1) that detects when
-an allocated block *must* have been lost.  It woks by enumerating all
+an allocated block *must* have been lost.  It works by enumerating all
 memory locations that could contain a pointer and marking the blocks
 the point to.  It then sweeps through all allocated blocks, flagging any
 that were not marked: since no pointer anywhere in the program points to
@@ -11,7 +10,9 @@ them, they must be lost.  We then extend it to be a conservative garbage
 collector (Part 2) --- a tool that finds allocated blocks that no live
 pointers references and then frees it.
 
-  - NOTE: I said last time that we would do this using shadow memory,
+Notes:
+  - There's a bunch of useful background reading in [PRELAB](PRELAB.md).
+  - I said last time that we would do this using shadow memory,
     but we won't :) It's more straightforward to do it without.  
 
 Check-off:
