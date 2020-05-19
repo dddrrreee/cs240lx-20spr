@@ -262,7 +262,7 @@ Both the leak detector and garbage collector do not accurately handle if:
      starting at the beginning of each memory region, then 
      starting at 1 byte in, then 2, then 3.  We would get many false references.
   4. You do funny things with the pointer.  One example:
-     writing bits to the upper, unused bits of the address to hold extra
+     using the upper, unused bits of the address to hold extra
      type information.  Such pointers will likely look like random
      integers and will be ignored.  Another example: saving space by
      xor'ing pointers together (and old Microsoft interview question!).
@@ -283,16 +283,16 @@ Some expedient limits we add just because we are doing a lab:
 In order to fit these topics in a short lab we are wildly over-simplifying
 how to do memory allocation. Some obvious things to change:
 
-  1. Don't just use a single byte sentinel.  Do something more sensitive.
-  2. Don't have just a single contiguous allocation for the heap.  Often
-     you'll stitch a heap together from disjoint pages.
-  3. Do a faster allocator object-based allocator or a an arena allocator (see the [PRELAB.md](./PRELAB.md))
-  4. Shrink down the space and speed overhead.
-  5. Decouple the debugging aspect from the garbage collector itself, so 
+  - Do a faster allocator object-based allocator or a an arena allocator (see the [PRELAB.md](./PRELAB.md))
+  - Shrink down the space and speed overhead.
+  - Decouple the debugging aspect from the garbage collector itself, so 
      you can use it during production on a raw, non-debugging allocator.
-  6. We have an incredibly slow approach to allocation and deallocation.  See
+  - We have an incredibly slow approach to allocation and deallocation.  See
      the readings!
-  7. Many many many other things. 
+  - Don't just use a single byte sentinel.  Do something more sensitive.
+  - Don't have just a single contiguous allocation for the heap.  Often
+     you'll stitch a heap together from disjoint pages.
+  - Many many many other things. 
 
 With all that said, the biggest problem we have with code is correctness.
 And the biggest source of complexity in memory allocation is introduced by
