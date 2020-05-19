@@ -129,7 +129,8 @@ For example, assume:
   1. An aligned 4-byte word `w` contains the value `0x10000f8`.
   2. Our allocator has allocated a block `b` that starts at address `0x1000000` and ends 
      at address `0x1000100`.
-Then we consider `w` potentially a valid pointer and mark `b`.
+
+Therefore, we will consider `w` potentially a valid pointer and mark `b`.
 
 Of course, if `w` was just a random integer, this means we falsely
 marked `b`.  However, for our purposes this is "conservative" mistake
