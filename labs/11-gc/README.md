@@ -34,11 +34,11 @@ Hopefully did not break your code.
 
   5. You should implement an iterator for your allocated blocks.
 
-        // returns pointer to the first header block.
-        hdr_t *ck_first_hdr(void);
+            // returns pointer to the first header block.
+            hdr_t *ck_first_hdr(void);
 
-        // returns pointer to next hdr or 0 if none.
-        hdr_t *ck_next_hdr(hdr_t *p);
+            // returns pointer to next hdr or 0 if none.
+            hdr_t *ck_next_hdr(hdr_t *p);
 
      These should run your header check before returning a header.
 
