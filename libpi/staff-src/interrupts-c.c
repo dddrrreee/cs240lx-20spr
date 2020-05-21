@@ -27,10 +27,10 @@ void int_set_handler(unsigned handler_id, int_handler_t handler) {
 void int_init(void) {
     // put interrupt flags in known state. 
     //  BCM2835 manual, section 7.5
+    dev_barrier();
     PUT32(Disable_IRQs_1, 0xffffffff);
     PUT32(Disable_IRQs_2, 0xffffffff);
     dev_barrier();
-
 
     extern unsigned _interrupt_table;
     extern unsigned _interrupt_table_end;
@@ -43,12 +43,13 @@ void int_init(void) {
         dst[i] = src[i];
 }
 
+
+#if 0
 void fast_interrupt_vector(unsigned pc) {
     INT_UNHANDLED("fast", pc);
 }
 
 
-#if 0
 #define UNHANDLED(msg,r) \
 	panic("ERROR: unhandled exception <%s> at PC=%x\n", msg,r)
 
