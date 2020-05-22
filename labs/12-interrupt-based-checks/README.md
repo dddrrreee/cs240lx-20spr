@@ -19,7 +19,7 @@ Today:
      run your heap checker and see if you can detect errors.
 
   3. As you notice, interrupt checking lets you transparently check an
-     arbitrary predicate with *guaranteed* regularlity without any
+     arbitrary predicate with *guaranteed* regularity without any
      code modifications.  This hack can serve you well in real life.
      However, a downside is that we will rarely get lucky and interrupt
      exactly when the invariant breaks (we can also miss if it breaks
@@ -28,21 +28,21 @@ Today:
      we replace them with a branch instruction that jumps to custom
      checking routine for that specific instruction address.  Because the
      jump is the same size as the load or store, the program binary does
-     not change size ("dialate") and so we do not have to patch program
+     not change size ("dilate") and so we do not have to patch program
      addresses (infeasible if you can't reliably classify code and data).
      Because the trampoline is customized to that specific instruction,
-     we can hardcode any knowledge it needs, including the return address
+     we can hard-code any knowledge it needs, including the return address
      it needs to jump back to.
 
      This means that when we interrupt a load or store once, the check
      will be performed for all future executions.  I.e., it is sticky,
      or persistent.
 
-  4. While step (3) gives us much more contol over the program, there
+  4. While step (3) gives us much more control over the program, there
      are large blind spots until we instrument everything --- we will
      miss large chunks of code that only run for a short while or do
      not repeat.  We will build a trivial "restore-and-replay" setup to
-     your code that will allow you restart your progam over and over,
+     your code that will allow you restart your program over and over,
      until you have covered all of its code.  You can then check it on
      a thorough, final run.
 
@@ -55,13 +55,13 @@ Today:
 ## Part 1: interrupt based checking.
 
 In this part, integrate the timer code with your checking code.
-  1. You should check if the interrupted pc was within your memory 
+  1. You should check if the interrupted PC was within your memory 
      checking code.  You can figure out the code range by putting
-     a sentinal routine at the start of `ckalloc.c`:
+     a sentinel routine at the start of `ckalloc.c`:
 
             void ckalloc_start(void) {}
 
-     and a sentinal routine at the end:
+     and a sentinel routine at the end:
 
             void ckalloc_end(void) {}
 
@@ -86,7 +86,7 @@ how quickly you can catch the error.  Also perhaps add other tests and other err
 
 Notes:
     1. You probably should make a way to easily shrink down the clock period in the timer
-       intrrupt.
+       interrupt.
     2. As you make interrupts more frequent, your code can appear to "lock up" b/c it
        is either running too slowly or b/c you are doing something you should not in 
        the interrupt handler.
@@ -103,3 +103,69 @@ Extension:
 
 ----------------------------------------------------------------------
 ## Part 2: binary rewriting
+
+The tradeoff with interrupt checking:
+   1. The more frequently we run interrupts, the more accurate our checking, but the
+      larger the overhead.   If you check often enough, this overhead can prevent
+      your program from making any visible progress.
+   2. The less frequently we run, the faster we go, the but more likely it is for us
+      to miss errors.
+
+Our partial hack for this will be to make our checks "sticky" in an
+instruction once, we will rewrite it to call our checking code directly.
+This way we do many more thorough checks than the interrupt handler can
+hope to.
+
+
+
+When we interrupt address `x`: 
+  1. Check that we haven't already rewritten `x`.  
+  2. If so, skip.
+  3. Otherwise mark it (so we don't rewrite again) and generate a checking 
+     trampoline (below).
+
+The easiest way to understand the trampoline is to keep keep in mind the three
+things it has to do:
+  1. We need to call a checking routine.  
+  2. Run the original instruction
+  3. Jump back to 4 bytes past the rewritten instruction.
+
+Thus, we need to generate the following using your
+dynamic code generation knowledge from lab 2:
+  1. Before we can call anything, save the caller-saved registers (
+     since they are all live (just like interrupt handling).  Do this by 
+     `push`ing  everything but `pc`.
+  2. Call your monitoring routine using a `bl` instruction.  Make sure to move any 
+     values you need to the right argument registers (`r0` through `r3`).
+  3. Pop all registers.
+  4. Insert the instruction at address `x` at this point so it gets executed.
+  5. Insert a custom jump (`b` instruction`) back to address `x+4`.
+
+
+We'll need one trampoline and one flag for each monitored instruction.
+The easiest approach is to just preallocate these up front in an array
+and then just index using the `pc` (make sure to subtract the beginning
+of the range and divide by 4!).
+
+The big issue --- we can't do this simple approach for all instructions
+(e.g., it will break relative branches).  For speed we will only want
+to do for loads and stores in any case since these are the operations
+that actually cause an invariant to break.    Skipping ALU operations
+is a significant speedup.
+
+Because mistakes in dynamically generated code can be insanely hard to track down,
+for today's lab we will take a ludicrously brain-dead, stupid approach:
+  1. Look in your `part3-test.list`
+  2. Pull out instruction encoding for the load and store instructions in 
+     `test_check`.   
+  3. Write your binary rewriter --- for today only! --- to 
+     look for *only* those values and rewrite them.
+  4. After you do a rewrite, dump out the values of the instructions in your
+     trampoline and check with everyone else.
+
+This approach will make it easy for use to cross-check and make sure we all have
+the same method for encoding branches and branch-and-links.
+
+The obvious huge extension is to rewrite the instruction decoding so you can
+check arbitrary loads and stores.  The main tricky thing is making sure
+you don't rewrite those that involve the `pc` register (or so so carefully).
