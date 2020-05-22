@@ -166,6 +166,14 @@ for today's lab we will take a ludicrously brain-dead, stupid approach:
 This approach will make it easy for use to cross-check and make sure we all have
 the same method for encoding branches and branch-and-links.
 
-The obvious huge extension is to rewrite the instruction decoding so you can
-check arbitrary loads and stores.  The main tricky thing is making sure
-you don't rewrite those that involve the `pc` register (or so so carefully).
+Folow up:
+  1. The obvious huge extension is to rewrite the instruction decoding so you can
+     check arbitrary loads and stores.  The main tricky thing is making sure
+     you don't rewrite those that involve the `pc` register (or so so carefully).
+  2. A good way to thoroughly check your code is to use it to rewrite (but not check)
+     all your previous pi programs and make sure their output does not change.  This
+     is a ruthless check --- after you pass it, you'd be surprised if your rewriting code
+     was broken.
+
+----------------------------------------------------------------------
+### Part 3: record-replay
