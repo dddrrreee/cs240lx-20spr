@@ -54,38 +54,52 @@ Today:
 ----------------------------------------------------------------------
 ## Part 1: interrupt based checking.
 
-***STILL NEED TO WRITE BELOW***
-
 In this part, integrate the timer code with your checking code.
   1. You should check if the interrupted pc was within your memory 
-     checking code.  You will need to add an empty routine `gc_code_begin`
-     at the beginning and `gc_code_end` at the end, similarly for your
-     memory allocator.
+     checking code.  You can figure out the code range by putting
+     a sentinal routine at the start of `ckalloc.c`:
+
+            void ckalloc_start(void) {}
+
+     and a sentinal routine at the end:
+
+            void ckalloc_end(void) {}
+
+     And considering all code between them as not-checkable. 
+     Note that we use a special `gcc` option so it does not
+    reorder the routines!
+
   2. If the interrupt pc is within these bounds, skip checking and increment a `skipped` counter.
   3. If not, run the checking and increment a `checking` counter.
 
-Implement three routines:
-  1. `stat_check_init`: do any initialization.
-  2. `stat_check_on`: allow it to start checking.
-  3. `stat_check_off`: turn off checking.
+Implement the routines in `ck-memcheck.c` (described at the end of `ckalloc.h`).
+Key routines:
+  1. `ck_mem_init`: do any initialization.
+  2. `ck_mem_on`: start checking.
+  3. `ck_mem_off`: turn off checking.
 
-They should be able to turn on checking and turn it off repeatedly.  They should
-also `panic` if `stat_check_init` was not called.
+Clients should be able to turn on checking and turn it off repeatedly.
+They should also `panic` if `stat_check_init` was not called.
 
-I'm not sure the best way to say how frequent --- have them compute the clock speed?
-etc?
+You'll have to copy in and modify the timer code.  Play around with the test to see
+how quickly you can catch the error.  Also perhaps add other tests and other errors.
 
-Have them put their leak checking in source?
-Add to cstart.
-Run some old programs (not sure which ones).
+Notes:
+    1. You probably should make a way to easily shrink down the clock period in the timer
+       intrrupt.
+    2. As you make interrupts more frequent, your code can appear to "lock up" b/c it
+       is either running too slowly or b/c you are doing something you should not in 
+       the interrupt handler.
+    3. If your interrupt handler uses data that is shared with non-interrupt code
+       make sure it is `volatile` or you just do `put32` and `get32`.
 
-You should be able to run the checks in part 1 and have them pass.
-These merely check that given output of any program, adding the checking does not change
-them.
-    You can slip this into any 
-Hmm.  Maybe we should have them modify?  Add to cstart.  Then automatically handle.
 
-Maybe have them rerun over and over?
+Extension:
+  1. Make it so you can transparently run all your old tests and have them pass.  A nice 
+     thing about our checker is that it should not alter the behavior of existing programs
+     other than making them slower.  So it's easy to do lots and lots of regressions.
+     (Perhaps the easiest way to do this is modifying `cstart`; even slicker is to modify
+      the `.bin`.)
 
 ----------------------------------------------------------------------
-## Part 2: interrupt based checking.
+## Part 2: binary rewriting
