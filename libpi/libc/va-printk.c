@@ -128,6 +128,7 @@ int va_printk(char *buf, int n, const char *fmt, va_list args) {
 	char *p = buf, *e = buf + n - 1;
 
 	buf[0] = 0;
+    const char *fmt_start = fmt;
 	for(; *fmt && p < e; ) {
 		if(*fmt != '%')
 			*p++ = *fmt++;
@@ -184,7 +185,10 @@ int va_printk(char *buf, int n, const char *fmt, va_list args) {
 				s = emit(8, num, 128, va_arg(args, int),width,0);
 				break;
 			default: 
-				panic("printk: not handling specifier '%c'\n", *fmt);
+                ((char *)fmt)[1] = 0;
+				printk("printk: not handling specifier '%c' (ascii=%d)\n", *fmt, *fmt);
+                putk((char*)fmt_start);
+				panic("printk error\n");
 				return 0;   // ugh
 			}
 			fmt++;
