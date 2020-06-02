@@ -25,7 +25,7 @@
     panic(args);\
 } while(0)
 
-#define assert(bool) do { if((bool) == 0) panic(#bool); } while(0)
+#define assert(bool) do { if((bool) == 0) panic("%s", #bool); } while(0)
 
 #define _XSTRING(x) #x
 
