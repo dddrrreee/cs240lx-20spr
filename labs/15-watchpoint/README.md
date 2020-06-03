@@ -34,23 +34,71 @@ very useful in the future.
 
 ### Background
 
+The arm1176jzf chip we are using has multiple "debug" modes.  We are using
+"monitor debug-mode" which just means that you can configure the hardware
+to throw exceptions when the contents of a small set of addresses are
+read, written or executed.  The manual confusingly refers to the addresses as 
+*modified virtual addresses* (MVAs), but as far as I can tell, you can also 
+use physical addresses.   (I can't find any sentence that gives us any guarantee
+of this, so if you see one let me know!).  
+
+
+
+
+As we've seen repeatedly: 
+  - The ARM will control functionality through different co-processors.  For
+    debuging functionality, that is co-processor 14.
+  - There will typically be a configuration register that controls whether
+    the functionality is enabled or disabled.  For us, this is the
+    "debug status and control register" (`DSCR`) on 13-7.
+  - 
+
+
+The list of the hardware debug registers is on page 13-5 (page 480 in my pdf).
+
+A cheat-sheet of assembly instructions to access these registers (13-26):
+<table><tr><td>
+<img src="images/cp14-asm.png"/>
+</td></tr></table>
+
+When a debug fault happens, the 
+hardware will put additional values in different fault registers.
 A short cheat sheet of the assembly code to get various of the fault registers:
 <table><tr><td>
 <img src="images/cheat-sheet-fault-regs.png"/>
 </td></tr></table>
 
 -----------------------------------------------------------------------------
-### Part 0:  Get the debug id register
+### Part 0:  Get the debug ID register (DIDR)
 
 As a warmup, implement a routine to get the debug id register (page 13-6)
 and use this to determine how many watchpoint and breakpoints our specific
 ARM processor provides.
 
+As stated on 13-5, the CP14 debug registers have:
+  - `Opcode_1` is `0`.
+  - `CRn` is `0`.
+
+From the table abov:
+  - `Opcode_2` is `0`.
+  - `CRm` is `c0`.
+
+So we need to use the instruction:
+
+    mrc p14, 0, <Rd>, c0, c0, 0
+
+You should implement the routine:
+    - `cp14-debug.h:didr_get()`
+    - `bit-support.h` provides some functions for bit manipulation.
+    - There are some macros that may or may not help you at the top of `cp14-debug.h`.
+    - When you run your code, `tests/test1.c` should pass: make sure you can figure
+      out how many watchpoints and how many breakpoints we have.
+
 -----------------------------------------------------------------------------
 ### Part 1:  Catch loads and stores of `NULL`.
 
 So far we've been vulnerable to load and stores of NULL (address 0).
-If you run this code it will execute "successfully":
+If you run this code it will execute "successfully"!
 
     #include "rpi.h"
     void notmain(void) {
@@ -58,10 +106,40 @@ If you run this code it will execute "successfully":
         printk("NULL = %x\n", *(volatile unsigned *)0);
     }
 
-For this part:
-  1. Set a watchpoint on address 0 using the `WVAR` (6-) and `WCTR` (6-)
-  2. Implement the code in the `data_abort_int` handler to check if the
+As mentioned above and in the readings, the ARM chip we're using provides
+*watchpoints* to trap when an address is used in a load or store and
+*breakpoints* for when you try to execute the contents of an address.
+The exception you receive for each is different.
+
+For both, there will be one register that you put the address to watch in,
+and a second, paired register to control what happens when the address
+is used.
+
+To set a watchpoint you can follow the recipe on 13-47.
+  1. Enable monitor debugging using the `DSCR` (13-7): bits 14 and 15.
+  2. Set the "watchpoint value register" (WVR) on 13-20 to 0.
+  3. Set the "watchpoint control register" (WCR) on 13-21.
+  4. After finishing your modifications of cp14, make sure you do a
+     `prefetchflush` (see below) to make sure the processor refetches
+     and re-decodes the instructions in the instuction prefetch buffer.
+  5. Implement the code in the `data_abort_int` handler to check if the
      exception is from a debug exception and, if so crash with an error.
+
+For the WCR: We don't want linking (which refers to the use of context id's).
+We do want:
+   - Watchpoints both in secure and non-secure;
+   - For both loads and stores.
+   - Both priviledged and user.
+   - Enabled.
+   - Byte address select for all accesses (0x0, 0x1, 0x2, 0x3).
+
+When you are done, `tests/test1.c` should pass.
+
+After any modification to a co-processor 14 register, you have to do a 
+`PrefetchFLush`:
+<table><tr><td>
+<img src="images/prefetch-flush.png"/>
+</td></tr></table>
 
 How to get the data fault status register (DFSR, page 3-64): 
 <table><tr><td>
@@ -73,11 +151,6 @@ You can use the DFSR to get the cause of the fault from bits `0:3` if `bit[10]=0
 <img src="images/data-fault-field.png"/>
 </td></tr></table>
 
-After any modification to a co-processor 14 register, you have to do a 
-`PrefetchFLush`:
-<table><tr><td>
-<img src="images/prefetch-flush.png"/>
-</td></tr></table>
 
 How to get the fault address register (FAR): 
 <table><tr><td>
