@@ -22,9 +22,9 @@ unsigned timer_get_usec_raw(void) {
 unsigned timer_get_usec(void) {
 // comment these out for this lab (8) so student
 // code does not get hit by weird timing issues.
-//    dev_barrier();
+    dev_barrier();
     unsigned u = timer_get_usec_raw();
-//    dev_barrier();
+    dev_barrier();
     return u;
 }
 

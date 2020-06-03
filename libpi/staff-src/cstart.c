@@ -26,6 +26,7 @@ void _cstart() {
     assert(fp_is_enabled);
 #   endif
 
+    cstart_handler();
 #if 0
     // this links in so much stuff.  need to fix.
     control_blk_t *cb = cb_get_block();
