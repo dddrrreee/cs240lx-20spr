@@ -214,6 +214,10 @@ uint32_t load_code(struct vdev *v);
 // entry point definition
 void notmain(void);
 
+// hook for your code.
+void cstart_handler(void);
+// hook for your code.
+void reboot_handler(void);
 
 /******************************************************************
  * SD card routines.

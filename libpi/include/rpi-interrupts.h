@@ -35,10 +35,13 @@ enum {
 #define RPI_BASIC_ARM_TIMER_IRQ         (1 << 0)
 
 // get the status register.
-static inline unsigned cpsr_get(void) {
-    unsigned cpsr;
+static inline uint32_t cpsr_get(void) {
+    uint32_t cpsr;
     asm volatile("mrs %0,cpsr" : "=r"(cpsr));
     return cpsr;
+}
+static inline void cpsr_set(uint32_t cpsr) {
+    asm volatile("msr cpsr, %0" :: "r"(cpsr));
 }
 
 static inline int int_is_enabled(void) {
