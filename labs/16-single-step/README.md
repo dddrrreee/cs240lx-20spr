@@ -84,6 +84,11 @@ passed in and does not return:
    - Setup the sp.
    - Do a branch and link on `r1` 
 
+Tests:
+    - `16-part1-test1.c`
+    - `16-part1-test2.c`
+    - `16-part1-test3.c`
+
 -----------------------------------------------------------------------------
 ### Part 2: Switching back to supervisor mode
 
@@ -124,22 +129,21 @@ prefetching, so perhaps you could argue we don't need the flush.  I think
 there are cases where we could have problems if we ran this code more
 than once and it remembered the destination.))
 
-The test 16-part2-test1.c should pass.
+The test `16-part2-test1.c` should pass (sorry there are not more!).
 
 -----------------------------------------------------------------------------
 ### Part 3: Write a simple concurrency checker.
 
-probably the first thing: make it so it can return.
 
-- get rwset so you know when you have reached a fixed point.
-- ah: could get the state hash so you have this too.   make a simple 
-  model checking lab?
-
-- make sure that panic works.
-- check push/pop.
-- check push/push
-- Have them write an LDEX lock implementation.
-- chekc push/push with a lock.
+-----------------------------------------------------------------------------
+### Extensions
+  1. Don't switch until there was a load or store (can't matter otherwise).
+  2. Compute the read-write set from loads and stores so you know when 
+     you reach a fixed point.
+  3. Have a state hash so you know when you don't have to explore further.
+  4. Make a way to yield back and forth.
+  5. Write an LDEX lock implementation and check it.
+  6. check system call locking.
 
 - use lock with a non-volatile to show is broken.
 - Extend to check for null as well as mismatch.
