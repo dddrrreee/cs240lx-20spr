@@ -55,4 +55,6 @@
 
 #define unimplemented() panic("implement this function!\n");
 
+#define exit_success(args...)  \
+            do { printk("SUCCESS:"); output(args); clean_reboot(); } while(0)
 #endif
