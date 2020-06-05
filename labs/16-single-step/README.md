@@ -85,7 +85,6 @@ passed in and does not return:
    - Setup the sp.
    - Do a branch and link on `r1` 
 
-
 -----------------------------------------------------------------------------
 ### Part 2: Write a simple concurrency checker.
 
