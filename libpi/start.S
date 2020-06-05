@@ -8,7 +8,8 @@
 .globl _start
 _start:
     @ force the mode to be SUPER.
-    mov r0, #0b11011
+    mov r0,  #0b10011
+
     msr cpsr, r0
     prefetch_flush(r0)
 
