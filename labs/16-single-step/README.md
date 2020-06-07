@@ -43,7 +43,7 @@ moving parts and, thus, less things to break.  In particular:
   3. Not exactly an error, but: i changed my code so that B() returns
      an int indicating whether it finished (1) or could not run yet (0).
      the code just retries until it can run.  this makes the tests much
-     simpler.
+     simpler.  The new tests are in `code/tests2.0`.
 
 
 -----------------------------------------------------------------------------
