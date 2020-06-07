@@ -7,9 +7,11 @@
 
 // this is 128MB --- should change to closer to what the r/pi A+ actually has.
 #define STACK_ADDR          0x8000000
+#define STACK_ADDR2         0x7000000
 
 // put right above it.
 #define INT_STACK_ADDR      0x9000000  
+
 
 // this is the highest address we use --- above it is free.  should just rewrite 
 // the code so that we can malloc.

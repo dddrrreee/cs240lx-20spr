@@ -37,7 +37,7 @@ typedef unsigned char cqe_t;
 #ifndef CQ_N
 #   define CQ_N 8192
 #endif
-typedef struct {
+typedef volatile struct {
     // single mutator of head, single mutator of tail = lock free.  
     volatile cqe_t c_buf[CQ_N];
     unsigned fence;
@@ -151,7 +151,7 @@ static inline void cq_ok(cq_t *c) {
         panic("fence is corrupted\n");
 }
 static inline void cq_init(cq_t *c, unsigned errors_fatal_p) {
-    memset(c, 0, sizeof *c);
+    memset((void*)c, 0, sizeof *c);
     c->fence = 0x12345678;
     c->head = c->tail = 0;
     c->overflow = 0;
