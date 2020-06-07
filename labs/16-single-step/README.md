@@ -3,17 +3,17 @@
 
 -----------------------------------------------------------------------------
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
-*** NOTE: the original lab was buggy!!! ***
+***NOTE: the original lab was buggy!!!***
 
 Many people were having weird state problems.  I think this was mainly because
 I tried to cheap-out and just use the normal stack for running "A()"
