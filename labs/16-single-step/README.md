@@ -1,5 +1,48 @@
 ## Lab: single-stepping to make simple, powerful tools
 
+
+-----------------------------------------------------------------------------
+**** NOTE: the original lab was buggy!!! ****
+**** NOTE: the original lab was buggy!!! ****
+**** NOTE: the original lab was buggy!!! ****
+**** NOTE: the original lab was buggy!!! ****
+**** NOTE: the original lab was buggy!!! ****
+**** NOTE: the original lab was buggy!!! ****
+
+Many people were having weird state problems.  I think this was mainly because
+I tried to cheap-out and just use the normal stack for running "A()"
+in `USER` mode.   This, of course, was dumb.   Chen you start calling
+system calls, you will switch back to `SUPER` mode.   It sill start using
+it's private stack pointer.  of course, "A()" has also been using the
+same stack, and been updating its stack pointer.  ***the system call
+will not see this updated sp***   As a result, it wills start trashing
+the state that A() saved to the stack.
+
+The easy fix is to use a private stack.  you can kmalloc this and pass
+it in, or use the constant  STACK_ADDR2.
+
+I should have also simplified other parts of the code so there were less
+moving parts and, thus, less things to break.  In particular:
+
+
+
+  1. Use the `cps` instruction to set things to user mode (`cps #USER_MODE`) 
+     --- this means you don't have to pass stuff in to your trampolines.
+     It is also faster since you don't have to do a read-modify-write (mrs/msr).
+  2. Have your system call for switching back to SUPER mode do just that --- 
+     this means you won't have to pass any paramters in.  It can just set the 
+     `spsr` to SUPER and finish.
+  3. Not exactly an error, but: i changed my code so that B() returns
+     an int indicating whether it finished (1) or could not run yet (0).
+     the code just retries until it can run.  this makes the tests much
+     simpler.
+
+
+-----------------------------------------------------------------------------
+
+
+
+
 In this lab we are going to:
   1. extend the last lab so you can single-step through instructions.
   2. Use this to write a concurrency checker that is tiny but mighty.
