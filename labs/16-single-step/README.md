@@ -2,6 +2,7 @@
 
 
 -----------------------------------------------------------------------------
+
 *** NOTE: the original lab was buggy!!! ***
 
 *** NOTE: the original lab was buggy!!! ***
@@ -18,11 +19,11 @@ Many people were having weird state problems.  I think this was mainly because
 I tried to cheap-out and just use the normal stack for running "A()"
 in `USER` mode.   This, of course, was dumb:   
    - When you start calling system calls, you will switch back to `SUPER` mode.
-     It sill start using it's private stack pointer.  
+     It will start using it's private SUPER stack pointer.  
    - Of course, "A()" has also been using the same stack, and been updating 
-     its stack pointer.
-   - However, ***the system call runs in SUPER mode and so will not see
-     this updated sp***   
+     its USER stack pointer.
+   - Unfortunately, ***the system call uses the SUPER sp and so will not see
+     the USER updated sp***   
    - As a result, it wills start trashing the state that A() saved to the stack.
 
 The easy fix is to use a private stack.  you can kmalloc this and pass
