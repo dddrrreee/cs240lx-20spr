@@ -40,7 +40,7 @@ uint32_t bits_clr(uint32_t x, unsigned lb, unsigned ub) {
     unsigned n = ub-lb+1;
 
     unsigned mask = (1 << n) - 1;
-    return x & (~mask << lb);
+    return x & ~(mask << lb);
 }
 
 // set bits [lb:ub] to v (inclusive)
