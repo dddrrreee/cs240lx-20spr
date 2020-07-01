@@ -48,3 +48,26 @@ You'll need to pull in:
    - cp14-debug.h
    - cpsr-util.h
    - interrupts-asm.S
+
+
+### Part 3: read about shadow memory and memcheck
+
+I keep talking and talking about shadow memory and memchecking but we 
+haven't really got into the primary sources.  This is one of those cases
+where things are not written up in a nice way and we have to go 
+to not-easy-reading primary sources.  I'll limit this type of reading this
+quarter, but in this case, it's (probably) the right thing to do.
+
+We'll go over two for this next lab (Thurs):
+  1. `./docs/shadow-memory2007.pdf`: the valgrind authors discuss shadow memory.
+  2. ./docs/memcheck2005.pdf`: they describe their most popular checking tool.
+
+You'll have to read them pretty carefully at least twice (I will too
+since I lost my marked up copies!).   Do so with the view of:
+"how would I build this?" 
+
+The complexity of these systems will hopefully give you a good appreciation
+of the alternative way you are building similar tools.
+
+Optional:
+  - `./docs/valgrind.pdf` --- a huge, sprawling paper on all of valgrind.
