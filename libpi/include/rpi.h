@@ -254,4 +254,6 @@ void *pi_sec_read(uint32_t lba, uint32_t nsec);
 #define likely(x)       __builtin_expect((x),1)
 #define unlikely(x)     __builtin_expect((x),0)
 
+#include "rpi-constants.h"
+
 #endif
