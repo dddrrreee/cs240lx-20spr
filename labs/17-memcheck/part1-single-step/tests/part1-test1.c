@@ -1,5 +1,5 @@
 // engler: trivial check that you can switch to user mode.
-#include "memcheck.h"
+#include "single-step.h"
 
 static int user_fn(void) {
     trace("user mode = %b, current mode=%b\n", USER_MODE, mode_get(cpsr_get()));
