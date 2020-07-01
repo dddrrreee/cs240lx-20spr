@@ -1,0 +1,21 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part1-test3.bin> about to boot
+******************sending 9920 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+TRACE:about to try running at user level
+cur mode: SUPER MODE, saved mode = USER MODE, switch-to mode=SUPER MODE
+shadow lr=0x8f40, shadow sp = 0x7000000
+pc = 0x8f48, saved sp=0x7000000
+system call: sp=0x7ffff78, inst=11101111000000000000000000000001, sys_num=1, r0=0x60000113
+TRACE:success: 17 single steps (i got 17)!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up

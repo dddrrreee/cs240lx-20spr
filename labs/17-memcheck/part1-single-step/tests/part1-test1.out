@@ -1,0 +1,27 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part1-test1.bin> about to boot
+******************sending 9944 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+TRACE:about to try running at user level
+TRACE:user mode = 10000, current mode=10000
+TRACE:hello 0
+TRACE:hello 1
+TRACE:hello 2
+TRACE:hello 3
+TRACE:hello 4
+TRACE:hello 5
+TRACE:hello 6
+TRACE:hello 7
+TRACE:hello 8
+TRACE:hello 9
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up
