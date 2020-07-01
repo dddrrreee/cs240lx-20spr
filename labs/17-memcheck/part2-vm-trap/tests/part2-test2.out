@@ -1,0 +1,19 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part2-test2.bin> about to boot
+******************sending 16704 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:174:memcheck: about to turn ON
+memcheck.c:memcheck_on:178:memcheck: ON
+TRACE:expect datafault xlate fault at address: 0x7000000 at pc 0xab74
+TRACE:section xlate fault: 0x7000000, at pc=0xab74
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up
