@@ -24,6 +24,7 @@
     printk(args); \
     panic(args);\
 } while(0)
+#define trace_clean_exit(args...) do { trace(args); clean_reboot(); } while(0)
 
 #define assert(bool) do { if((bool) == 0) panic("%s", #bool); } while(0)
 
