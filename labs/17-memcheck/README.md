@@ -32,4 +32,19 @@ I'll check in a couple of tests in part1.
 
 ### Part 2: implement virtual memory trapping
 
-I'm putting this together.
+The idea here it to register a region of memory so we get a trap on any load or
+store and then in the fault handle, remove the trap.  We do this by associating
+this memory with its own domain (`track_id`, which is 2) and setting the pemissions
+for this id to no-access to get traps, and to all access to not get traps.
+
+You'll have to modify 'part2-vm-trap/memcheck.c'.
+Implement:
+  1. `dom_perm_set` (easy).
+  2. `data_abort_vecto` involves computing the fault reason and then acting.
+
+Just chase through the four tests.
+
+You'll need to pull in:
+   - cp14-debug.h
+   - cpsr-util.h
+   - interrupts-asm.S
