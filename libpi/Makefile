@@ -116,7 +116,7 @@ ctags:
 	ctags *.[chSs] */*.[chSs]
 
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET) *~ $(TARGET).list tags start.o  fp-start.o
+	rm -rf $(BUILD_DIR) $(TARGET) */*~ *~ $(TARGET).list tags start.o  fp-start.o
 	make   --no-print-directory -C libc clean
 	make   --no-print-directory -C staff-src clean
 ifneq ($(USE_FP),1)

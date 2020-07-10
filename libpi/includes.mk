@@ -20,7 +20,7 @@ START = $(LPP)/start.o
 
 MEMMAP=$(LPP)/memmap
 
-INC = -I$(LIBPI_PATH)/include -I.  -I$(LIBPI_PATH)/
+INC = -I$(LIBPI_PATH)/include -I.  -I$(LIBPI_PATH)/ -I$(LIBPI_PATH)/libc -I$(LIBPI_PATH)/staff-private
 
 # -I$(LIBPI_PATH)/staff-src
 
