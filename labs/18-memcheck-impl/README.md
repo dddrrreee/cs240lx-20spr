@@ -24,14 +24,16 @@ Delete these from:
   1. your `part1-single-step` and make sure it compiles.  
   2. your `part2-vm-trap` and make sure it compiles.
 
-#### Part 1: `memcheck_fn`
+#### Part 1: running a routine at user-level: `memcheck_fn`
 
 If you look in `memcheck.h` there's a new function:
 
     int memcheck_fn(int (*fn)(void));
 
 This will run `fn` in a checked environment that flags if you read or
-write unallocated or freed memory in the heap.
+write unallocated or freed memory in the heap.  For part 1 we are just
+going to run it at user level with the heap protected --- as soon as you
+get a single fault, disable checking and continue.
 
 The first time it is called (but only the first time!) it should do
 any initialization:
@@ -58,11 +60,18 @@ The rest of the routine should:
 
 If you look at the tests for part1 you can see they build up slowly: 
    - `part1-test0.c`: this just runs a routine without any checking.
-      Make sure this works before you start adding stuff.  
+      Make sure this works before you start adding stuff.  Run it first without
+      any of the initialization above, then add the init and make sure it still
+      works.
 
-   - `part1-test1.c`: this makes sure you are running at user level and that you can call a 
-      system call.  Just make up a fake one that returns 10.
+   - `part1-test1.c`: this makes sure you are running at user level and
+      that you can call a system call.  Just make up a fake one that
+      returns 10.
 
-this just runs a routine without any checking.  Make sure this works before
- The first just runs a routine 
+   - `part1-test2.c`: this makes sure you are running at user level and
+      that you can take a single domain trap.    For this part you'll have
+      to protect the heap and, in the trap handler, change the permissions
+      for the tracked domain.  Sadly, it has no internal checking so
+      you'll have to look at the output to make sure it makes sense.
 
+#### Part 2: trapping each load and store.
