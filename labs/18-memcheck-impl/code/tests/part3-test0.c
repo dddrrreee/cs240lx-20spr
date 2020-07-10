@@ -6,9 +6,8 @@
 unsigned expected = 45;
 
 int notmain_client() {
+    // zero initialized by kmalloc.
     volatile int *x = memcheck_alloc(4);
-    *x = 0;
-
     for(int i = 0; i < 10; i++)
         *x += i;
     printk("*x = %d\n", *x);
