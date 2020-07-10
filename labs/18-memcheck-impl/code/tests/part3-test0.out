@@ -12,9 +12,6 @@ memcheck.c:memcheck_on:140:memcheck: about to turn ON
 memcheck.c:memcheck_on:144:memcheck: ON
 TRACE:about to try running at user level
 system call: 2
-memcheck.c:memcheck_off:152:memcheck: OFF
-memcheck.c:memcheck_on:140:memcheck: about to turn ON
-memcheck.c:memcheck_on:144:memcheck: ON
 TRACE:domain section fault: 0x200000 at pc=0x803c
 fault address = 0x200000
 mismatch at pc 0x8040: disabling
