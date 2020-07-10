@@ -22,6 +22,7 @@ static void run(void) {
 }
 
 void notmain() {
+    // keep running memcheck_fn --- make sure you don't multiple init.
     for(int i = 0; i < 10; i++) 
         run();
     trace_clean_exit("success!!\n");

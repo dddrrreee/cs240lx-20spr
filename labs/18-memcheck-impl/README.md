@@ -75,3 +75,39 @@ If you look at the tests for part1 you can see they build up slowly:
       you'll have to look at the output to make sure it makes sense.
 
 #### Part 2: trapping each load and store.
+
+This is the fun part, where we can use the trick we keep discussing
+
+Basic idea:
+  1. Remove permissions from the heap memory.
+  2. Run the code at user level.
+  3. If it doesn't load or store to the heap (does ALU operations, or memory operations
+     elsewhere) you will get no traps and run at full speed (very different from 
+     valgrind!).
+  4. If it does load or store the heap, you will get a domain section trap.
+
+How to handle a domain section trap:
+  1. Change permissions for the heap domain id so the code can read or write it (as 
+     in part 1).  
+  2. Before you jump back: Set a single step mismatch on the exception program counter.
+     Now, when you jump, it will *only* run that one single instruction and then 
+     give a single-step mismatch exception.
+  3. In the mismatch exception handle, remove access to the domain id (by calling
+     `memcheck_trap_enable` and disable the mismatch breakpoint.  Now, when you 
+     jump back, the code will continue as before.
+
+For tests:
+  - `part2-test0.c`: checks that you can handle multiple traps.  You'll have to 
+      look at the output.
+  - `part2-test0.c`: checks that you can handle calling your `memcheck_fn` multiple
+      times.  You'll have to look at the output.
+  - `part2-test2.c`: simple test that shouldn't give any issues --- call `kmalloc`
+    and make sure things work.  This checks that you called 
+    `kmalloc_init_set_start(heap_start)` to set where the heap started.
+
+There should be more tests, so if you write some that would be great.
+
+#### Part 3: simple shadow
+
+Here you'll do a simple shadow memory.  We'll just allocate a single 4-byte word
+to keep things easy.
