@@ -110,4 +110,30 @@ There should be more tests, so if you write some that would be great.
 #### Part 3: simple shadow
 
 Here you'll do a simple shadow memory.  We'll just allocate a single 4-byte word
-to keep things easy.
+to keep things easy.  There are three parts to this:
+  1. For each byte of heap memory, we'll have a byte of shadow memory holding
+     its state.  You might want to use the partial-definitions in `memcheck-internal.h`
+     but you can use you own.  I put the shadow memory right after the heap and its
+     the same size (one MB).  Create and map this during your own time initialization.
+  2. Implement `memcheck_alloc`, which is a system call that will
+     allocate memory, turn checking off so the shadow memory can be
+     written, mark its shadow memory as `ALLOCATED`, and then turn
+     checking back off.
+
+     How this is used: The exception handler will check if the memory
+     being read or written to is `ALLOCATED` and give errors for
+     everything else.  It needs to be a system call since eventually we
+     will be protecting the shadow memory with its own domain id. 
+
+  3. Implement `memcheck_free`, which checks that the memory is indeed
+     allocated and marks the state as `FREED`.  This is a system call
+     for the same reasons as `memcheck_alloc`.
+
+***SIMPLIFICATION***: for the moment, just assert that we do a single
+four-byte allocation.   We can fold in your checking allocator later ---
+we just want to test the shadow memory in the simplest way possible.
+
+Tests:
+  - `part3-test0.c`: checks that you can allocate and write to memory without errors.
+  - `part3-test1.c`: checks that if you allocate, free and then write to memory
+     that you catch it.
