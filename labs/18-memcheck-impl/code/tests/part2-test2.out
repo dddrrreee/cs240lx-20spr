@@ -1,0 +1,138 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part2-test2.bin> about to boot
+******************sending 22264 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:140:memcheck: about to turn ON
+memcheck.c:memcheck_on:144:memcheck: ON
+TRACE:about to try running at user level
+in notmain_client: going to kmalloc!
+TRACE:domain section fault: 0x200000 at pc=0xb88c
+fault address = 0x200000
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200001 at pc=0xb88c
+fault address = 0x200001
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200002 at pc=0xb88c
+fault address = 0x200002
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200003 at pc=0xb88c
+fault address = 0x200003
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200004 at pc=0xb88c
+fault address = 0x200004
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200005 at pc=0xb88c
+fault address = 0x200005
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200006 at pc=0xb88c
+fault address = 0x200006
+mismatch at pc 0xb890: disabling
+TRACE:domain section fault: 0x200007 at pc=0xb88c
+fault address = 0x200007
+mismatch at pc 0xb890: disabling
+going to run test_resume
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 0
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 0
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 1
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 1
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 2
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 2
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 3
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 3
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 4
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 4
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 5
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 5
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 6
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 6
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 7
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 7
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 8
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 8
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbb0
+TRACE:domain section fault: 0x200000 at pc=0xbbb0
+fault address = 0x200000
+mismatch at pc 0xbbb4: disabling
+TRACE:checking that 0x200000 == 9
+TRACE:domain section fault: 0x200000 at pc=0xbbe0
+fault address = 0x200000
+mismatch at pc 0xbbe4: disabling
+TRACE:correct: 0x200000 == 9
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:152:memcheck: OFF
+TRACE:success!!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up

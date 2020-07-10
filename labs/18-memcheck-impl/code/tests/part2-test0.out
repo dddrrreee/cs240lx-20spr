@@ -1,0 +1,33 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part2-test0.bin> about to boot
+******************sending 22244 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:140:memcheck: about to turn ON
+memcheck.c:memcheck_on:144:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbd8
+TRACE:domain section fault: 0x200000 at pc=0xbbd8
+fault address = 0x200000
+mismatch at pc 0xbbdc: disabling
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0xbbd8
+TRACE:domain section fault: 0x200000 at pc=0xbbd8
+fault address = 0x200000
+mismatch at pc 0xbbdc: disabling
+TRACE:domain section fault: 0x200000 at pc=0xbc08
+fault address = 0x200000
+mismatch at pc 0xbc0c: disabling
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:152:memcheck: OFF
+TRACE:success!!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up
