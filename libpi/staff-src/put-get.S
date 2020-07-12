@@ -3,15 +3,19 @@
 
 
 @ assembler kills off back-to-back labels?
-.globl put32
-put32:
-    str r1,[r0]
-    bx lr
 
-.globl PUT32
-PUT32:
-    str r1,[r0]
-    bx lr
+@ we put these in start.S so that they are in the same location in everyone's
+@ binary --- we had seperated them out so that you could override them by dropping
+@ in different .o's, but never wound up doing that, so pulling it out.
+@.globl put32
+@put32:
+@    str r1,[r0]
+@    bx lr
+@
+@.globl PUT32
+@PUT32:
+@    str r1,[r0]
+@    bx lr
 
 
 
@@ -39,16 +43,16 @@ PUT8:
 
 
 
-.globl get32
-get32:
-    ldr r0,[r0]
-    bx lr
-
-.globl GET32
+@.globl get32
+@get32:
+@    ldr r0,[r0]
+@    bx lr
+@
+@@.globl GET32
 GET32:
-    ldr r0,[r0]
-    bx lr
-
+@    ldr r0,[r0]
+@    bx lr
+@
 .globl GETPC
 GETPC:
     mov r0,lr
