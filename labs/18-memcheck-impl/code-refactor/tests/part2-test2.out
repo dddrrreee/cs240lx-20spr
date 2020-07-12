@@ -1,0 +1,168 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part2-test2.bin> about to boot
+******************sending 24080 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+in notmain_client: going to kmalloc!
+TRACE:domain section fault: 0x200000 at pc=0xbcdc
+fault address = 0x200000
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200001 at pc=0xbcdc
+fault address = 0x200001
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200002 at pc=0xbcdc
+fault address = 0x200002
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200003 at pc=0xbcdc
+fault address = 0x200003
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200004 at pc=0xbcdc
+fault address = 0x200004
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200005 at pc=0xbcdc
+fault address = 0x200005
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200006 at pc=0xbcdc
+fault address = 0x200006
+TRACE:mismatch at pc 0xbce0: disabling
+TRACE:domain section fault: 0x200007 at pc=0xbcdc
+fault address = 0x200007
+TRACE:mismatch at pc 0xbce0: disabling
+going to run test_resume
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=9
+TRACE:checking that 0x200000 == 0
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=10
+TRACE:correct: 0x200000 == 0
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=11
+TRACE:checking that 0x200000 == 1
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=12
+TRACE:correct: 0x200000 == 1
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=13
+TRACE:checking that 0x200000 == 2
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=14
+TRACE:correct: 0x200000 == 2
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=15
+TRACE:checking that 0x200000 == 3
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=16
+TRACE:correct: 0x200000 == 3
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=17
+TRACE:checking that 0x200000 == 4
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=18
+TRACE:correct: 0x200000 == 4
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=19
+TRACE:checking that 0x200000 == 5
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=20
+TRACE:correct: 0x200000 == 5
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=21
+TRACE:checking that 0x200000 == 6
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=22
+TRACE:correct: 0x200000 == 6
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=23
+TRACE:checking that 0x200000 == 7
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=24
+TRACE:correct: 0x200000 == 7
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=25
+TRACE:checking that 0x200000 == 8
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=26
+TRACE:correct: 0x200000 == 8
+TRACE:1: expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=27
+TRACE:checking that 0x200000 == 9
+TRACE:2: expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=28
+TRACE:correct: 0x200000 == 9
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+TRACE:success!!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up

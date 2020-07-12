@@ -1,0 +1,226 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part2-test1.bin> about to boot
+******************sending 24024 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=1
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=2
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=3
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=4
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=5
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=6
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=7
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=8
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=9
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=10
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=11
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=12
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=13
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=14
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=15
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=16
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=17
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=18
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=19
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=20
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=21
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=22
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=23
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=24
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=25
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=26
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=27
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=28
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8020
+TRACE:domain section fault: 0x200000 at pc=0x8020
+fault address = 0x200000
+TRACE:mismatch at pc 0x8024: disabling
+TRACE:saw expected fault at pc=0x8020, addr=0x200000, reason=9 fault_count=29
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9 fault_count=30
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+TRACE:success!!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up

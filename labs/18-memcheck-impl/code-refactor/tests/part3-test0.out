@@ -1,0 +1,133 @@
+find-ttyusb.c:find_ttyusb_first:106:FOUND: </dev/ttyUSB0>
+opened tty port </dev/ttyUSB0>.
+my-install: tty-usb=</dev/ttyUSB0> program=<./tests/part3-test0.bin> about to boot
+******************sending 23732 bytes
+waiting for a start
+got a start
+putting code
+put code and got back
+bootloader: Done.
+listening on ttyusb=</dev/ttyUSB0>
+memcheck.c:memcheck_on:146:memcheck: about to turn ON
+memcheck.c:memcheck_on:150:memcheck: ON
+TRACE:about to try running at user level
+system call: 2
+about to run sys_memcheck
+ran sys_memcheck
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x804c
+fault address = 0x200000
+TRACE:mismatch at pc 0x8050: disabling
+load at pc=0x8050, addr=0x200000 checked out
+legal load at pc=0x8050, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8054
+fault address = 0x200000
+TRACE:mismatch at pc 0x8058: disabling
+legal store at pc=0x8058, addr=0x200000
+TRACE:domain section fault: 0x200000 at pc=0x8064
+fault address = 0x200000
+TRACE:mismatch at pc 0x8068: disabling
+load at pc=0x8068, addr=0x200000 checked out
+legal load at pc=0x8068, addr=0x200000
+*x = 45
+TRACE:expect 'domain section fault' for addr 0x200000, at pc 0x8028
+TRACE:domain section fault: 0x200000 at pc=0x8028
+fault address = 0x200000
+TRACE:mismatch at pc 0x802c: disabling
+load at pc=0x802c, addr=0x200000 checked out
+legal load at pc=0x802c, addr=0x200000
+TRACE:saw expected fault at pc=0x8028, addr=0x200000, reason=9
+TRACE:domain section fault: 0x200000 at pc=0x80b4
+fault address = 0x200000
+TRACE:mismatch at pc 0x80b8: disabling
+load at pc=0x80b8, addr=0x200000 checked out
+legal load at pc=0x80b8, addr=0x200000
+system call: 1
+done with user mode run!
+memcheck.c:memcheck_off:158:memcheck: OFF
+TRACE:success!!
+DONE!!!
+
+Saw done
+
+bootloader: pi exited.  cleaning up
