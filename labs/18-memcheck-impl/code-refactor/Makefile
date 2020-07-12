@@ -34,7 +34,7 @@ GREP_STR := 'TRACE:\|ERROR:\|PANIC:'
 
 # system-call.o
 
-SYS_OBJS = interrupts-asm.o mmu.o mmu-helpers.o memcheck.o cp14-debug.o user-mode-run-fn.o  syscall.o memcheck-asm.o
+SYS_OBJS = interrupts-asm.o mmu.o mmu-helpers.o memcheck.o cp14-debug.o user-mode-run-fn.o  syscall.o memcheck-asm.o last-fault.o
 # ALL_SOURCES := $(wildcard ./*.c)
 OBJS := $(SYS_OBJS)
 # $(patsubst %.c, %.o, $(ALL_SOURCES))  $(SYS_OBJS)
