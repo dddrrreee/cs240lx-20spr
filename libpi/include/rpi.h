@@ -107,6 +107,8 @@ void clean_reboot(void) __attribute__((noreturn));
 // returns 0-filled memory.
 void *kmalloc(unsigned nbytes) ;
 void *kmalloc_aligned(unsigned nbytes, unsigned alignment);
+// returns raw memory, not zeroed out.
+void *kmalloc_notzero(unsigned sz);
 
 // initialize kmalloc
 void kmalloc_init(void);

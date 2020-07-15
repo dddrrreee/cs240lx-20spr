@@ -20,9 +20,9 @@
 
 #define trace(args...) do { printk("TRACE:"); printk(args); } while(0)
 #define trace_panic(args...) do { \
-    printk("TRACE:ERROR"); \
+    printk("TRACE:ERROR:"); \
     printk(args); \
-    panic(args);\
+	clean_reboot();							\
 } while(0)
 #define trace_clean_exit(args...) do { trace(args); clean_reboot(); } while(0)
 
