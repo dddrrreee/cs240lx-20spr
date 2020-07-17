@@ -16,7 +16,7 @@ bit_set(uint32_t x, unsigned bit) {
     return x | (1<<bit);
 }
 
-#define bits_isset bits_is_on
+#define bit_isset bits_is_on
 
 // is x[bit] == 1?
 static inline unsigned 
