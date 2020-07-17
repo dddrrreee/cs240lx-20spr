@@ -16,6 +16,12 @@ bit_set(uint32_t x, unsigned bit) {
     return x | (1<<bit);
 }
 
+static inline uint32_t 
+bit_not(uint32_t x, unsigned bit) {
+    assert(bit<32);
+    return x ^ (1<<bit);
+}
+
 #define bit_isset bit_is_on
 
 // is x[bit] == 1?
