@@ -55,6 +55,7 @@
 #define AssertNow(x) switch(1) { case (x): case 0: ; }
 
 #define unimplemented() panic("implement this function!\n");
+#define not_reached() panic("NOTREACHED!\n");
 
 #define exit_success(args...)  \
             do { printk("SUCCESS:"); output(args); clean_reboot(); } while(0)

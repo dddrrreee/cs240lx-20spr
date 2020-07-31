@@ -144,9 +144,8 @@ void enable_cache(void) ;
 void disable_cache(void) ;
 void flush_all_caches(void);
 
-
 unsigned rpi_get_model(void);
-int rpi_get_memsize(unsigned *s);
+uint32_t rpi_get_memsize(void);
 int rpi_get_serial(unsigned s[2]);
 
 /*****************************************************************************

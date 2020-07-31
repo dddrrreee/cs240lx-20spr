@@ -53,7 +53,6 @@ OBJS := $(foreach o, $(OBJS), $(BUILD_DIR)/$(notdir $o)) $(STAFF_OBJS)
 DEPS := $(OBJS:.o=.d)  $(BUILD_DIR)/$(START).d 
 
 EXTRA_DEPS = ./Makefile ./put-your-src-here.mk ./includes.mk
-
 HDRS := $(wildcard ./*.h ./*/*.h) $(EXTRA_DEPS)
 
 all: $(TARGET) $(START).o  $(LIBM)
@@ -63,7 +62,7 @@ libm:
 
 # we bundle start.s with the library: just make different ones for each
 # different start so that the library is internally consistent.
-$(TARGET): $(OBJS) $(SUPPORT_OBJS) $(HDRS)
+$(TARGET): $(OBJS) $(SUPPORT_OBJS) $(HDRS) $(EXTRA_DEPS)
 	arm-none-eabi-ar crf $(TARGET) $(OBJS) $(SUPPORT_OBJS)
 	$(OD) -D $@ > $@.list
 

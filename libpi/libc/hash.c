@@ -12,10 +12,14 @@
                        +(uint32_t)(((const uint8_t *)(d))[0]) )
 #endif
 
-uint32_t fast_hash(const void * _data, int len) {
+uint32_t fast_hash(const void * _data, uint32_t len) {
+    return fast_hash_inc(_data, len, len);
+}
+
+uint32_t fast_hash_inc(const void * _data, uint32_t len, uint32_t hash) {
     const char * data = (const void*)_data;
-uint32_t hash = len, tmp;
-int rem;
+    uint32_t tmp;
+    int rem;
 
     if (len <= 0 || data == NULL) return 0;
 

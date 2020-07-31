@@ -16,8 +16,6 @@ STAFF_OBJS= staff-objs/uart.o \
             staff-objs/gpio-int.o  \
             staff-objs/kmalloc.o \
             staff-objs/sw-uart.o 
-
-#           staff-objs/interrupts-asm.o 
 #           staff-objs/thread-asm.o    
 #           staff-objs/uart-int.o 
 #           staff-objs/rpi-thread.o   

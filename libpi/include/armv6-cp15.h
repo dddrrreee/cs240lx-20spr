@@ -122,7 +122,6 @@ void cp15_tlbr_print(void);
 void cp15_domain_print(void);
 
 
-#if 0
 /*******************************************************************************
  * MMU register read and writes.  
  */
@@ -177,6 +176,7 @@ void mmu_asid_print(void);
 #define mmu_predict_on(r) (r).Z_branch_pred = 1
 #define mmu_predict_off(r) (r).Z_branch_pred = 0
 
+#if 0
 #endif
 
 #endif
