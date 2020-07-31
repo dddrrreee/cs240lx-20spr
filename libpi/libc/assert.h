@@ -18,6 +18,7 @@
 	clean_reboot();							\
 } while(0)
 
+
 #define trace(args...) do { printk("TRACE:"); printk(args); } while(0)
 #define trace_panic(args...) do { \
     printk("TRACE:ERROR:"); \
