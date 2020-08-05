@@ -35,6 +35,10 @@ void rpi_reboot(void) {
         // of stuff.
         // assert(!at_user_level());
     }
+#if 0
+    // should fold in the above?
+    reboot_reset();
+#endif
 
     // gives uart time to flush: should just call flush directly.
     delay_ms(30);

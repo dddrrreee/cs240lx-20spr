@@ -21,6 +21,7 @@
 // XXX: probably should not do this --- alot of random code in <string.h>
 #include <string.h>
 
+
 /*****************************************************************************
  * standard libc like functions for the pi.
  */
@@ -99,6 +100,9 @@ void rpi_reboot(void) __attribute__((noreturn));
 
 // reboot after printing out a string to cause the unix my-install to shut down.
 void clean_reboot(void) __attribute__((noreturn));
+
+// called by reboot --- lets system do any cleanup (e.g., disable mmu)
+void reboot_reset(void);
 
 /*******************************************************************************
  * simple memory allocation: no free, just have to reboot().
