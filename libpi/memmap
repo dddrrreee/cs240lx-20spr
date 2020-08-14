@@ -16,13 +16,13 @@ SECTIONS
         __code_end__ = .;
         . = ALIGN(8);
     }
+    .rodata : { *(.rodata*) }
     .data : { 
             __data_start__ = .;
             *(.data*) 
             __data_end__ = .;
             . = ALIGN(4);
     } 
-    .rodata : { *(.rodata*) }
     .bss : {
         . = ALIGN(4);
         __bss_start__ = .;
