@@ -39,7 +39,7 @@ void rpi_set_output(int (*putc_fp)(int), int (*puts_fp)(const char *));
 
 
 // this doesn/t work b/c we use %b for bits.
-int printk(const char *format, ...);
+int (printk)(const char *format, ...);
 //                 __attribute__ ((format (printf, 1, 2)));
 int snprintk(char *buf, size_t n, const char *fmt, ...);
                 // __attribute__ ((format (printf, 3, 4)));
@@ -260,5 +260,9 @@ void *pi_sec_read(uint32_t lba, uint32_t nsec);
 #define unlikely(x)     __builtin_expect((x),0)
 
 #include "rpi-constants.h"
+
+// used in case the .bin is different.
+void custom_loader(void) ;
+
 
 #endif
