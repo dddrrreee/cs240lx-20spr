@@ -66,6 +66,8 @@ int read_file_noalloc(const char *name, void *buf, unsigned maxsize);
 
 // opens the ttyusb <device> and returns file descriptor.
 int open_tty(const char *device);
+int open_tty_n(const char *device, int maxattempts);
+
 
 // used to set a tty to the 8n1 protocol needed by the tty-serial.
 int set_tty_to_8n1(int fd, unsigned speed, double timeout);
@@ -135,8 +137,12 @@ int can_read(int fd);
 
 int open_fake_tty(char **fake_dev_name);
 
+// fill in <fmt,..> using <...> and strcat it to <dst>
+char *strcatf(char *dst, const char *fmt, ...);
+
 // return a strdup's string.
-char *strcatf(const char *fmt, ...);
+char *strdupf(const char *fmt, ...);
+char *strcpyf(char *dst, const char *fmt, ...);
 
 // is <fd> open?
 int fd_is_open(int fd);
@@ -146,5 +152,16 @@ void argv_print(const char *msg, char *argv[]);
 
 // put your prototypes in here.
 #include "libunix-extra.h"
+
+// used to concat prefix to other symbol using cpp eval.
+#define concat1(x,y) x ## y
+#define prepend_sym(pre, sym) concat1(pre, sym)
+
+
+// calls handler when we get a control-c
+void catch_cntrl_c(void (*handler)(int));
+
+#include <assert.h>
+#include "bit-support.h"
 
 #endif

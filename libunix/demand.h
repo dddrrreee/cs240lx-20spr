@@ -88,6 +88,13 @@
     die(msg); \
 } while(0)
 
+#define fatal(msg...) do { 						                            \
+    output("%s:%s:%d:", __FILE__, __FUNCTION__, __LINE__);   \
+    die(msg); \
+} while(0)
+
+
+#define trace(args...) do { output("TRACE:"); output(args); } while(0)
 
 // same as panic, but differentiate that we literally thought this
 // could not happen (not just that we were simply not handling a 
@@ -109,7 +116,7 @@
 #define output(msg...) fprintf(stderr, ##msg)
 
 #define notreached()    panic("impossible: hit NOTREACHED!\n")
-#define unimplemented() panic("this code is not implemented.\n");
+#define unimplemented() panic("this code is not implemented.\n")
 
 /* Compile-time assertion: can only be used in a function. */
 #define AssertNow(x) switch(1) { case (x): case 0: ; }
