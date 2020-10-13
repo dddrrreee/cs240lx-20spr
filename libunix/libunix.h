@@ -164,4 +164,14 @@ void catch_cntrl_c(void (*handler)(int));
 #include <assert.h>
 #include "bit-support.h"
 
+
+// get a random number
+unsigned long fake_random(void);
+// get a seed.
+void fake_random_seed(unsigned x);
+// initialization:
+unsigned fake_random_init(void);
+
+
+
 #endif
