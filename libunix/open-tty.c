@@ -4,12 +4,8 @@
 
 #include "libunix.h"
 
-// attempt to open tty <device>, retries some number of times if fails.
-// otherwise panics.
-int open_tty(const char *device) {
+int open_tty_n(const char *device, int maxattempts) {
     int fd;
-
-    const unsigned maxattempts = 5;
     for(int i = 0; i < maxattempts; i++) {
         if((fd = open(device, O_RDWR | O_NOCTTY | O_SYNC)) >= 0) {
             output("opened tty port <%s>.\n", device);
@@ -19,4 +15,12 @@ int open_tty(const char *device) {
         sleep(1);
     }
     panic("couldn't open tty port <%s>\n", device);
+}
+
+    
+// attempt to open tty <device>, retries some number of times if fails.
+// otherwise panics.
+int open_tty(const char *device) {
+    const unsigned maxattempts = 5;
+    return open_tty_n(device, maxattempts);
 }

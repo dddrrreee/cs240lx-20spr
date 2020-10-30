@@ -15,6 +15,7 @@
 #include <dirent.h>
 static const char *ttyusb_prefixes[] = {
 	"ttyUSB",	// linux
+	"ttyACM",	// linux
 	"cu.SLAB_USB", // mac os
 	0
 };
@@ -51,8 +52,8 @@ char *find_ttyusb(void) {
             output("%s\n", namelist[n]->d_name);
 	    exit(1);
 	}
-    char *p =  strcatf("/dev/%s", namelist[0]->d_name);
-	debug("FOUND: <%s>\n", p);
+    char *p =  strdupf("/dev/%s", namelist[0]->d_name);
+	output("FOUND: <%s>\n", p);
     return p;
 }
 
@@ -81,8 +82,8 @@ char *find_ttyusb_last(void) {
             }
         }
     }
-    char *p =  strcatf("/dev/%s", last->d_name);
-	debug("FOUND: <%s>\n", p);
+    char *p =  strdupf("/dev/%s", last->d_name);
+	output("FOUND: <%s>\n", p);
     return p;
 }
 
@@ -102,7 +103,7 @@ char *find_ttyusb_first(void) {
             }
         }
     }
-    char *p =  strcatf("/dev/%s", first->d_name);
-	debug("FOUND: <%s>\n", p);
+    char *p =  strdupf("/dev/%s", first->d_name);
+	// debug("FOUND: <%s>\n", p);
     return p;
 }

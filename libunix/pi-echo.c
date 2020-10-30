@@ -40,8 +40,10 @@ void remove_nonprint(uint8_t *buf, int n) {
 // (pi rebooted) or we see a string indicating a clean shutdown.
 void pi_echo(int unix_fd, int pi_fd, const char *portname) {
     assert(pi_fd);
+#if 0
     if(portname)
         output("listening on ttyusb=<%s>\n", portname);
+#endif
 
     while(1) {
         unsigned char buf[4096];
@@ -49,6 +51,7 @@ void pi_echo(int unix_fd, int pi_fd, const char *portname) {
         int n;
         if((n=read_timeout(unix_fd, buf, sizeof buf, 1000))) {
             buf[n] = 0;
+            output("about to echo <%s> to pi\n", buf);
             write_exact(pi_fd, buf, n);
         }
 
@@ -71,7 +74,7 @@ void pi_echo(int unix_fd, int pi_fd, const char *portname) {
             output("%s", buf);
 
             if(pi_done(buf)) {
-                output("\nSaw done\n");
+                // output("\nSaw done\n");
                 clean_exit("\nbootloader: pi exited.  cleaning up\n");
             }
         }

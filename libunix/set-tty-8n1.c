@@ -37,7 +37,7 @@ int set_tty_to_8n1(int fd, unsigned speed, double timeout) {
     tty.c_cc[VMIN]  = 0;            // read doesn't block
     assert(timeout < 100 && timeout > 0);
     // 0.1 seconds read timeout
-    tty.c_cc[VTIME] = (int)timeout *60;             // this seems to cause issues?
+    tty.c_cc[VTIME] = (int)timeout *80;             // this seems to cause issues?
 
 	/*
 	 * Setup TTY for 8n1 mode, used by the pi UART.
