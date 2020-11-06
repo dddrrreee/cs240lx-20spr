@@ -104,6 +104,7 @@ uint32_t our_crc32_inc(const void *buf, unsigned size, uint32_t crc);
 
 // create file <name>: truncates if already exists.
 int create_file(const char *name);
+FILE *fcreate_file(const char *name);
 
 
 /********************************************************************************

@@ -11,3 +11,10 @@ int create_file(const char *name) {
         sys_die(open, "could not open file: <%s>", name);
     return fd;
 }
+
+FILE *fcreate_file(const char *name) {
+    FILE *f = fopen(name, "w");
+    if(!f)
+        sys_die(open, "could not open file: <%s>", name);
+    return f;
+}
